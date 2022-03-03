@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AndroidTemplateWithHilt" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.AndroidTemplateWithHilt" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/white</item>
@@ -18,4 +18,50 @@
         <!-- This is important! Don't forget to set window background -->
         <item name="android:windowBackground">@null</item>
     </style>
+
+    <!--region TextView-->
+    <style name="Text" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/_14sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Primary">
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="Text.Primary.Regular">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Text.Primary.Medium">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="Text.Primary.SemiBold">
+        <item name="fontFamily">@font/poppins_semi_bold</item>
+    </style>
+
+    <style name="Text.Primary.Bold">
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="Text.Secondary">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Secondary.Regular">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="Text.InterviewResult" parent="Text.Primary.Regular">
+        <item name="android:background">@drawable/bg_text_interview_result</item>
+        <item name="android:paddingStart">@dimen/_4dp</item>
+        <item name="android:paddingEnd">@dimen/_4dp</item>
+        <item name="android:paddingTop">@dimen/_2dp</item>
+        <item name="android:paddingBottom">@dimen/_2dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_10sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <!--endregion TextView-->
 </resources>

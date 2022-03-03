@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">interviews</string>
+
+    <string name="label_years">Years</string>
 </resources>
