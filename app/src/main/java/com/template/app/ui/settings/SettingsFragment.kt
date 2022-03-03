@@ -49,5 +49,8 @@ class SettingsFragment : Fragment() {
         binding.textViewManagers.setOnClickListener {
             navigator.navigateToManagersScreen()
         }
+        binding.textViewInterviewers.setOnClickListener {
+            navigator.navigateToInterviewersScreen()
+        }
     }
 }
