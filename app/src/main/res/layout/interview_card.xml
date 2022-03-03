@@ -47,9 +47,10 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewName"
         style="@style/Text.Primary.SemiBold"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_24sp"
+        app:layout_constraintEnd_toStartOf="@id/layoutResult"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/textViewId"
         tools:text="John Doe" />
@@ -57,10 +58,11 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewDate"
         style="@style/Text.Secondary.Regular"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4dp"
         android:textSize="@dimen/_10sp"
+        app:layout_constraintEnd_toStartOf="@id/layoutResult"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/textViewName"
         tools:text="20 March, 2020" />
@@ -68,11 +70,12 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/interviewerName"
         style="@style/Text.Primary.Regular"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8dp"
         android:textSize="@dimen/_12sp"
         app:layout_constraintBottom_toBottomOf="@id/guideBottom"
+        app:layout_constraintEnd_toStartOf="@id/layoutResult"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/textViewDate"
         app:layout_constraintVertical_bias="0"
