@@ -31,6 +31,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = SettingsFragmentBinding.bind(view)
         initToolbar()
+        initViewListeners()
     }
 
     override fun onDestroyView() {
@@ -41,6 +42,12 @@ class SettingsFragment : Fragment() {
     private fun initToolbar() {
         binding.toolbar.setNavigationOnClickListener {
             navigator.goBack()
+        }
+    }
+
+    private fun initViewListeners() {
+        binding.textViewManagers.setOnClickListener {
+            navigator.navigateToManagersScreen()
         }
     }
 }

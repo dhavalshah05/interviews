@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="AppTheme.FullScreenDialog" parent="Theme.AppCompat.Dialog">
