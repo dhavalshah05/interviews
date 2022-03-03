@@ -12,11 +12,16 @@ import com.template.app.domain.interviewers.models.Interviewer
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.domain.managers.models.Manager
+import com.template.app.ui.common.navigator.AppNavigator
 import com.template.app.util.display.DisplayMetrics
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class InterviewsFragment : Fragment() {
+
+    @Inject
+    lateinit var navigator: AppNavigator
 
     private var _binding: InterviewsFragmentBinding? = null
     private val binding get() = _binding!!
@@ -76,6 +81,7 @@ class InterviewsFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menuSetting -> {
+                    openSettingsScreen()
                     true
                 }
                 R.id.menuFilters -> {
@@ -84,6 +90,10 @@ class InterviewsFragment : Fragment() {
                 else -> false
             }
         }
+    }
+
+    private fun openSettingsScreen() {
+        navigator.navigateToSettingsScreen()
     }
 
     private fun getDummyInterviews(): List<Interview> {

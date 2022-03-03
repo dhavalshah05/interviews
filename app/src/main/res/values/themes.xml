@@ -68,6 +68,19 @@
         <item name="android:textSize">@dimen/_20sp</item>
     </style>
 
+    <style name="Text.SettingsItem" parent="Text.Primary.Medium">
+        <item name="android:layout_marginStart">@dimen/_20dp</item>
+        <item name="android:layout_marginEnd">@dimen/_20dp</item>
+        <item name="android:layout_marginBottom">@dimen/_20dp</item>
+        <item name="android:background">@drawable/bg_card_setting</item>
+        <item name="android:drawableEnd">@drawable/ic_arrow_right</item>
+        <item name="android:paddingStart">@dimen/_20dp</item>
+        <item name="android:paddingEnd">@dimen/_20dp</item>
+        <item name="android:paddingTop">@dimen/_15dp</item>
+        <item name="android:paddingBottom">@dimen/_15dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+
     <!--endregion TextView-->
 
     <!--region Button-->
