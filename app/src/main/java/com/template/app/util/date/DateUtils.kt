@@ -66,6 +66,20 @@ object DateUtils {
         return outputDateFormat.format(inputDate)
     }
 
+    fun format(
+        inputDate: Long,
+        outFormat: DateFormat,
+        outTimeZone: DateTimeZone? = null
+    ): String {
+        val outputDateFormat = SimpleDateFormat(outFormat.value, Locale.getDefault())
+
+        if (outTimeZone != null) {
+            outputDateFormat.timeZone = outTimeZone.timeZone
+        }
+
+        return outputDateFormat.format(inputDate)
+    }
+
     /**
      * Get the current date according to DateFormat and DateTimeZone.
      */

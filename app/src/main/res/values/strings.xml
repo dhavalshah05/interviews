@@ -2,4 +2,16 @@
     <string name="app_name">interviews</string>
 
     <string name="label_years">Years</string>
+    <string name="label_pending">Pending</string>
+    <string name="label_selected">Selected</string>
+    <string name="label_rejected">Rejected</string>
+    <string name="label_hold">Hold</string>
+    <string name="label_cancelled">Cancelled</string>
+
+    <string name="screen_title_interviews">Interviews</string>
+
+    <string name="button_add_new">Add new</string>
+
+    <string name="menu_filters">Filters</string>
+    <string name="menu_settings">Settings</string>
 </resources>

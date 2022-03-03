@@ -20,4 +20,6 @@
     
     <color name="divider">#F0F3FD</color>
     <color name="dividerOnCardBackground">#1A01264F</color>
+
+    <color name="ripple">#0D000000</color>
 </resources>

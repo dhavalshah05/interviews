@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.template.app.R
 import com.template.app.ui.common.navigator.NavigatorActivity
-import com.template.app.ui.login.LoginFragment
+import com.template.app.ui.interviews.InterviewsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +23,7 @@ class MainActivity : NavigatorActivity() {
     }
 
     override fun getRootFragments(): List<Fragment> {
-        return listOf(LoginFragment())
+        return listOf(InterviewsFragment())
     }
 
 }
