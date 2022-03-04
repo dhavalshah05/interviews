@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.template.app.databinding.SelectInterviewerBottomSheetBinding
 import com.template.app.domain.interviewers.models.Interviewer
 import com.template.app.ui.common.bottomsheet.TransparentBottomSheet
+import com.template.app.ui.common.models.Selectable
 import com.template.app.util.bundle.getLongValueOrError
 import com.template.app.util.bundle.getStringValueOrError
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,18 +1,18 @@
-package com.template.app.ui.selectinterviewer
+package com.template.app.ui.selectmanager
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.template.app.databinding.SelectInterviewerItemBinding
-import com.template.app.domain.interviewers.models.Interviewer
+import com.template.app.databinding.SelectManagerItemBinding
+import com.template.app.domain.managers.models.Manager
 import com.template.app.ui.common.models.Selectable
 import com.template.app.util.superadapter.BaseRecyclerViewAdapter
 import com.template.app.util.superadapter.viewholder.BaseViewHolder
 
-class SelectInterviewerAdapter : BaseRecyclerViewAdapter<Selectable<Interviewer>, SelectInterviewerAdapter.ViewHolder>() {
+class SelectManagerAdapter : BaseRecyclerViewAdapter<Selectable<Manager>, SelectManagerAdapter.ViewHolder>() {
 
     interface Listener {
-        fun onInterviewerClick(item: Selectable<Interviewer>)
+        fun onManagerClick(item: Selectable<Manager>)
     }
 
     private var listener: Listener? = null
@@ -26,21 +26,21 @@ class SelectInterviewerAdapter : BaseRecyclerViewAdapter<Selectable<Interviewer>
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        return ViewHolder(SelectInterviewerItemBinding.inflate(inflater, parent, false))
+        return ViewHolder(SelectManagerItemBinding.inflate(inflater, parent, false))
     }
 
-    inner class ViewHolder(private val binding: SelectInterviewerItemBinding) :
-        BaseViewHolder<Selectable<Interviewer>>(binding.root) {
+    inner class ViewHolder(private val binding: SelectManagerItemBinding) :
+        BaseViewHolder<Selectable<Manager>>(binding.root) {
 
-        private lateinit var item: Selectable<Interviewer>
+        private lateinit var item: Selectable<Manager>
 
         init {
             binding.root.setOnClickListener {
-                listener?.onInterviewerClick(item)
+                listener?.onManagerClick(item)
             }
         }
 
-        override fun bind(item: Selectable<Interviewer>) {
+        override fun bind(item: Selectable<Manager>) {
             this.item = item
             binding.textViewId.text = String.format("#%s", item.item.id.toString())
             binding.textViewName.text = item.item.name

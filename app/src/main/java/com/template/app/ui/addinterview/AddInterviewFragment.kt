@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.template.app.databinding.AddInterviewFragmentBinding
 import com.template.app.domain.interviewers.models.Interviewer
+import com.template.app.domain.managers.models.Manager
 import com.template.app.ui.common.navigator.AppNavigator
 import com.template.app.util.bundle.getParcelableValueOrError
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +17,7 @@ class AddInterviewFragment : Fragment() {
 
     companion object {
         private const val REQUEST_KEY_SELECT_INTERVIEWER = "select_interviewer"
+        private const val REQUEST_KEY_SELECT_MANAGER = "select_manager"
     }
 
     @Inject
@@ -25,6 +27,7 @@ class AddInterviewFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var selectedInterviewer: Interviewer? = null
+    private var selectedManager: Manager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,11 @@ class AddInterviewFragment : Fragment() {
             val interviewer: Interviewer = result.getParcelableValueOrError("interviewer")
             selectedInterviewer = interviewer
             binding.interviewer.setText(interviewer.name)
+        }
+        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_SELECT_MANAGER, this) { _, result ->
+            val manager: Manager = result.getParcelableValueOrError("manager")
+            selectedManager = manager
+            binding.hrManager.setText(manager.name)
         }
     }
 
@@ -103,6 +111,10 @@ class AddInterviewFragment : Fragment() {
     private fun initViewListeners() {
         binding.interviewer.setOnClickListener {
             navigator.navigateToSelectInterviewerScreen(REQUEST_KEY_SELECT_INTERVIEWER, selectedInterviewer?.id)
+        }
+
+        binding.hrManager.setOnClickListener {
+            navigator.navigateToSelectManagerScreen(REQUEST_KEY_SELECT_MANAGER, selectedManager?.id)
         }
     }
 }
