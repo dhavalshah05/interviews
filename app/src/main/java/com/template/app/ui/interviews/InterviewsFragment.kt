@@ -40,6 +40,13 @@ class InterviewsFragment : Fragment() {
         setRecyclerViewPadding()
         initRecyclerView()
         initToolbar()
+        initViewListeners()
+    }
+
+    private fun initViewListeners() {
+        binding.buttonAddNew.setOnClickListener {
+            navigator.navigateToAddInterviewScreen()
+        }
     }
 
     private fun setRecyclerViewPadding() {

@@ -9,14 +9,25 @@
     <string name="label_cancelled">Cancelled</string>
     <string name="label_hr_managers">HR Managers</string>
     <string name="label_interviewers">Interviewers</string>
+    <string name="label_candidate_name">Candidate name</string>
+    <string name="label_experience_years">Experience (Years)</string>
+    <string name="label_interview_date">Interview date</string>
+    <string name="label_hr_manager">HR Manager</string>
+    <string name="label_interviewer">Interviewer</string>
+    <string name="label_interview_comments">Interview comments</string>
+    <string name="label_practical_comments">Practical comments</string>
+    <string name="label_practical_link">Practical link</string>
 
     <string name="screen_title_interviews">Interviews</string>
     <string name="screen_title_settings">Settings</string>
     <string name="screen_title_hr_managers">@string/label_hr_managers</string>
     <string name="screen_title_interviewers">@string/label_interviewers</string>
+    <string name="screen_title_add_interview">Add interview</string>
 
     <string name="button_add_new">Add new</string>
+    <string name="button_add">Add</string>
 
     <string name="menu_filters">Filters</string>
     <string name="menu_settings">Settings</string>
+
 </resources>
