@@ -12,7 +12,7 @@ import com.template.app.databinding.InterviewDetailsFragmentBinding
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.common.navigator.AppNavigator
-import com.template.app.ui.interviews.UiInterviewResult
+import com.template.app.ui.common.models.UiInterviewResult
 import com.template.app.util.bundle.getParcelableValueOrError
 import com.template.app.util.date.DateUtils
 import dagger.hilt.android.AndroidEntryPoint

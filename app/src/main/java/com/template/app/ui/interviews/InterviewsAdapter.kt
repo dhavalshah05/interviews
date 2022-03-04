@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.template.app.databinding.InterviewCardBinding
 import com.template.app.domain.interviews.models.Interview
+import com.template.app.ui.common.models.UiInterviewResult
 import com.template.app.util.date.DateUtils
 import com.template.app.util.superadapter.BaseRecyclerViewAdapter
 import com.template.app.util.superadapter.viewholder.BaseViewHolder
-import java.util.*
 
 class InterviewsAdapter : BaseRecyclerViewAdapter<Interview, InterviewsAdapter.ViewHolder>() {
 
