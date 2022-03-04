@@ -1,7 +1,10 @@
 package com.template.app.ui.common.navigator
 
+import android.os.Bundle
 import androidx.fragment.app.FragmentManager
+import com.template.app.domain.interviews.models.Interview
 import com.template.app.ui.addinterview.AddInterviewFragment
+import com.template.app.ui.interviewdetails.InterviewDetailsFragment
 import com.template.app.ui.selectdate.SelectDateDialog
 import com.template.app.ui.interviewers.InterviewersFragment
 import com.template.app.ui.managers.ManagersFragment
@@ -44,6 +47,13 @@ class AppNavigator(
     fun navigateToSelectDateScreen(requestKeySelectDate: String) {
         val dialog = SelectDateDialog.newInstance(requestKeySelectDate)
         dialog.show(fragmentManager, SelectDateDialog.TAG)
+    }
+
+    fun navigateToInterviewDetailsScreen(interview: Interview) {
+        val fragment = InterviewDetailsFragment().apply {
+            arguments = InterviewDetailsFragment.createBundle(interview)
+        }
+        fragNavController.pushFragment(fragment)
     }
 
     /*fun switchToTab() {

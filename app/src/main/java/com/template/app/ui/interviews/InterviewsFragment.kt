@@ -89,7 +89,7 @@ class InterviewsFragment : Fragment() {
 
     private val interviewsAdapterListener = object : InterviewsAdapter.Listener {
         override fun onInterviewClick(item: Interview) {
-
+            navigator.navigateToInterviewDetailsScreen(item)
         }
     }
 
@@ -126,12 +126,12 @@ class InterviewsFragment : Fragment() {
                 Interview(
                     id = index.toLong(),
                     candidateName = "John Doe",
-                    experience = "2.3",
+                    experience = index.toString(),
                     interviewDate = System.currentTimeMillis(),
                     result = InterviewResult.PENDING,
                     interviewer = Interviewer(id = 1, name = "Dhaval Shah"),
                     manager = Manager(id = 1, name = "Khyati Shah"),
-                    interviewComments = "",
+                    interviewComments = if (index % 2 == 0) "" else "Demo interview comments",
                     practicalComments = "",
                     practicalLink = ""
                 )

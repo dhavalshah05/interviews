@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/menu_interview_details"
+        app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:paddingStart="@dimen/_20dp"
+        android:paddingEnd="@dimen/_20dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/candidateName"
+                style="@style/Text.Primary.SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_30sp"
+                tools:text="John Doe" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/interviewDate"
+                style="@style/Text.Secondary.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5dp"
+                tools:text="20/01/2022" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewResult"
+                style="@style/Text.InterviewResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:textSize="@dimen/_14sp"
+                tools:text="Selected" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_card_interview_details_item"
+                android:minHeight="@dimen/_45dp"
+                android:paddingHorizontal="@dimen/_20dp"
+                android:paddingVertical="@dimen/_10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/labelExperience"
+                    style="@style/Text.Primary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_experience_years"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/experience"
+                    style="@style/Text.Primary.SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2.8" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_card_interview_details_item"
+                android:minHeight="@dimen/_45dp"
+                android:paddingHorizontal="@dimen/_20dp"
+                android:paddingVertical="@dimen/_10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/labelInterviewer"
+                    style="@style/Text.Primary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_interviewer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/interviewer"
+                    style="@style/Text.Primary.SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Dhaval Shah" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_card_interview_details_item"
+                android:minHeight="@dimen/_45dp"
+                android:paddingHorizontal="@dimen/_20dp"
+                android:paddingVertical="@dimen/_10dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/labelManager"
+                    style="@style/Text.Primary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_hr_manager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/manager"
+                    style="@style/Text.Primary.SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Khyati Shah" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_card_interview_details_item"
+                android:minHeight="@dimen/_45dp">
+
+                <Space
+                    android:id="@+id/spaceInterviewCommentsHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/labelInterviewComments"
+                    style="@style/Text.Primary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:text="@string/label_interview_comments"
+                    app:layout_constraintBottom_toBottomOf="@id/spaceInterviewCommentsHeader"
+                    app:layout_constraintStart_toStartOf="@id/spaceInterviewCommentsHeader"
+                    app:layout_constraintTop_toTopOf="@id/spaceInterviewCommentsHeader" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/interviewCommentsNA"
+                    style="@style/Text.Secondary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:text="@string/label_not_available"
+                    android:textSize="@dimen/_14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/arrowInterviewComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@id/spaceInterviewCommentsHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/spaceInterviewCommentsHeader" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/interviewComments"
+                    style="@style/Text.Primary.SemiBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_15dp"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:textSize="@dimen/_14sp"
+                    android:visibility="gone"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/labelInterviewComments"
+                    tools:text="Here is some dummy data to display 2 lines of interview comments." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_card_interview_details_item"
+                android:minHeight="@dimen/_45dp">
+
+                <Space
+                    android:id="@+id/spacePracticalCommentsHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/labelPracticalComments"
+                    style="@style/Text.Primary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:text="@string/label_practical_comments"
+                    app:layout_constraintBottom_toBottomOf="@id/spacePracticalCommentsHeader"
+                    app:layout_constraintStart_toStartOf="@id/spacePracticalCommentsHeader"
+                    app:layout_constraintTop_toTopOf="@id/spacePracticalCommentsHeader" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/practicalCommentsNA"
+                    style="@style/Text.Secondary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:text="@string/label_not_available"
+                    android:textSize="@dimen/_14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/arrowPracticalComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@id/spacePracticalCommentsHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/spacePracticalCommentsHeader" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/practicalComments"
+                    style="@style/Text.Primary.SemiBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_15dp"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:textSize="@dimen/_14sp"
+                    android:visibility="gone"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/labelPracticalComments"
+                    tools:text="Here is some dummy data to display 2 lines of interview comments." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_card_interview_details_item"
+                android:minHeight="@dimen/_45dp">
+
+                <Space
+                    android:id="@+id/spacePracticalLinkHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/labelPracticalLink"
+                    style="@style/Text.Primary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:text="@string/label_practical_link"
+                    app:layout_constraintBottom_toBottomOf="@id/spacePracticalLinkHeader"
+                    app:layout_constraintStart_toStartOf="@id/spacePracticalLinkHeader"
+                    app:layout_constraintTop_toTopOf="@id/spacePracticalLinkHeader" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/practicalLinkNA"
+                    style="@style/Text.Secondary.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:text="@string/label_not_available"
+                    android:textSize="@dimen/_14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/arrowPracticalLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@id/spacePracticalLinkHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/spacePracticalLinkHeader" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/practicalLink"
+                    style="@style/Text.Primary.SemiBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_15dp"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:textSize="@dimen/_14sp"
+                    android:visibility="gone"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/labelPracticalLink"
+                    tools:text="Here is some dummy data to display 2 lines of interview comments." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

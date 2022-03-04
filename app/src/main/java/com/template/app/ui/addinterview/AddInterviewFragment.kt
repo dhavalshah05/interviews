@@ -201,9 +201,9 @@ class AddInterviewFragment : Fragment() {
                 result = InterviewResult.PENDING,
                 interviewer = interviewer,
                 manager = manager,
-                interviewComments = "",
-                practicalComments = "",
-                practicalLink = ""
+                interviewComments = binding.interviewComments.text.toString(),
+                practicalComments = binding.practicalComments.text.toString(),
+                practicalLink = binding.practicalLink.text.toString()
             )
 
             setResult(interview)
