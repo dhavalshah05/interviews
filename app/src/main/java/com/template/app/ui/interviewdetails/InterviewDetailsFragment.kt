@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.template.app.R
 import com.template.app.databinding.InterviewDetailsFragmentBinding
 import com.template.app.domain.interviews.models.Interview
+import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.common.navigator.AppNavigator
 import com.template.app.ui.interviews.UiInterviewResult
 import com.template.app.util.bundle.getParcelableValueOrError
@@ -22,6 +23,7 @@ class InterviewDetailsFragment : Fragment() {
 
     companion object {
         private const val REQUEST_KEY_EDIT_INTERVIEW = "edit_interview"
+        private const val REQUEST_KEY_SELECT_RESULT = "select_result"
         private const val BUNDLE_INTERVIEW = "INTERVIEW"
 
         fun createBundle(interview: Interview): Bundle {
@@ -37,8 +39,16 @@ class InterviewDetailsFragment : Fragment() {
     private var _binding: InterviewDetailsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val interview: Interview by lazy {
-        arguments.getParcelableValueOrError(BUNDLE_INTERVIEW)
+    private lateinit var interview: Interview
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        interview = arguments.getParcelableValueOrError(BUNDLE_INTERVIEW)
+        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_SELECT_RESULT, this) { _, result ->
+            val interviewResult: InterviewResult = result.getParcelableValueOrError("interview_result")
+            interview = interview.copy(result = interviewResult)
+            bindInterviewResult(interviewResult)
+        }
     }
 
     override fun onCreateView(
@@ -87,6 +97,9 @@ class InterviewDetailsFragment : Fragment() {
         binding.arrowPracticalLink.setOnClickListener {
             toggleViewVisibility(binding.practicalLink)
         }
+        binding.buttonEditResult.setOnClickListener {
+            navigator.navigateToSelectResultScreen(REQUEST_KEY_SELECT_RESULT, interview.result)
+        }
     }
 
     private fun toggleViewVisibility(view: View) {
@@ -101,11 +114,7 @@ class InterviewDetailsFragment : Fragment() {
         binding.interviewer.text = interview.interviewer.name
         binding.manager.text = interview.manager.name
 
-        // interview result
-        val uiInterviewResult = UiInterviewResult.from(interview.result)
-        binding.textViewResult.text = getString(uiInterviewResult.textResId)
-        binding.textViewResult.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), uiInterviewResult.bgColorResId))
-        binding.textViewResult.setTextColor(ContextCompat.getColor(requireContext(), uiInterviewResult.textColorResId))
+        bindInterviewResult(interview.result)
 
         // interview comments
         if (interview.interviewComments.isNotBlank()) {
@@ -136,5 +145,22 @@ class InterviewDetailsFragment : Fragment() {
             binding.practicalLinkNA.visibility = View.VISIBLE
             binding.arrowPracticalLink.visibility = View.GONE
         }
+    }
+
+    private fun bindInterviewResult(result: InterviewResult) {
+        val uiInterviewResult = UiInterviewResult.from(result)
+        binding.textViewResult.text = getString(uiInterviewResult.textResId)
+        binding.textViewResult.backgroundTintList = ColorStateList.valueOf(
+            ContextCompat.getColor(
+                requireContext(),
+                uiInterviewResult.bgColorResId
+            )
+        )
+        binding.textViewResult.setTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                uiInterviewResult.textColorResId
+            )
+        )
     }
 }

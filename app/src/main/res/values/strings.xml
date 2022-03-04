@@ -19,6 +19,7 @@
     <string name="label_practical_link">Practical link</string>
     <string name="label_select_interviewer">Select interviewer</string>
     <string name="label_select_manager">Select manager</string>
+    <string name="label_select_result">Select result</string>
     <string name="label_not_available">N/A</string>
 
     <string name="screen_title_interviews">Interviews</string>

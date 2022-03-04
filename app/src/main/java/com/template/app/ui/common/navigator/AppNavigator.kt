@@ -3,6 +3,7 @@ package com.template.app.ui.common.navigator
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.template.app.domain.interviews.models.Interview
+import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.addinterview.AddInterviewFragment
 import com.template.app.ui.editinterview.EditInterviewFragment
 import com.template.app.ui.interviewdetails.InterviewDetailsFragment
@@ -11,6 +12,7 @@ import com.template.app.ui.interviewers.InterviewersFragment
 import com.template.app.ui.managers.ManagersFragment
 import com.template.app.ui.selectinterviewer.SelectInterviewerBottomSheet
 import com.template.app.ui.selectmanager.SelectManagerBottomSheet
+import com.template.app.ui.selectresult.SelectResultBottomSheet
 import com.template.app.ui.settings.SettingsFragment
 
 class AppNavigator(
@@ -62,6 +64,11 @@ class AppNavigator(
             arguments = InterviewDetailsFragment.createBundle(interview)
         }
         fragNavController.pushFragment(fragment)
+    }
+
+    fun navigateToSelectResultScreen(requestKeySelectResult: String, interviewResult: InterviewResult) {
+        val dialog = SelectResultBottomSheet.newInstance(requestKeySelectResult, interviewResult)
+        dialog.show(fragmentManager, SelectResultBottomSheet.TAG)
     }
 
     /*fun switchToTab() {

@@ -42,14 +42,31 @@
                 android:layout_marginTop="@dimen/_5dp"
                 tools:text="20/01/2022" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewResult"
-                style="@style/Text.InterviewResult"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
-                android:textSize="@dimen/_14sp"
-                tools:text="Selected" />
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewResult"
+                    style="@style/Text.InterviewResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_14sp"
+                    tools:text="Selected" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonEditResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/_4dp"
+                    android:src="@drawable/ic_edit" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutExperience"

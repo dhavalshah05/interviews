@@ -1,6 +1,10 @@
 package com.template.app.domain.interviews.models
 
-enum class InterviewResult {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+enum class InterviewResult : Parcelable {
     PENDING,
     SELECTED,
     REJECTED,
