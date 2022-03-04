@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.ui.addinterview.AddInterviewFragment
+import com.template.app.ui.editinterview.EditInterviewFragment
 import com.template.app.ui.interviewdetails.InterviewDetailsFragment
 import com.template.app.ui.selectdate.SelectDateDialog
 import com.template.app.ui.interviewers.InterviewersFragment
@@ -31,6 +32,13 @@ class AppNavigator(
     fun navigateToAddInterviewScreen(requestKeyAddInterview: String) {
         val fragment = AddInterviewFragment()
         fragment.arguments = AddInterviewFragment.createBundle(requestKeyAddInterview)
+        fragNavController.pushFragment(fragment)
+    }
+
+    fun navigateToEditInterviewScreen(requestKeyEditInterview: String, interview: Interview) {
+        val fragment = EditInterviewFragment().apply {
+            arguments = EditInterviewFragment.createBundle(requestKeyEditInterview, interview)
+        }
         fragNavController.pushFragment(fragment)
     }
 

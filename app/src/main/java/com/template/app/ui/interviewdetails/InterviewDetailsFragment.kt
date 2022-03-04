@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.template.app.R
 import com.template.app.databinding.InterviewDetailsFragmentBinding
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.ui.common.navigator.AppNavigator
 import com.template.app.ui.interviews.UiInterviewResult
 import com.template.app.util.bundle.getParcelableValueOrError
-import com.template.app.util.bundle.getSerializableValueOrError
 import com.template.app.util.date.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -21,6 +21,7 @@ import javax.inject.Inject
 class InterviewDetailsFragment : Fragment() {
 
     companion object {
+        private const val REQUEST_KEY_EDIT_INTERVIEW = "edit_interview"
         private const val BUNDLE_INTERVIEW = "INTERVIEW"
 
         fun createBundle(interview: Interview): Bundle {
@@ -64,6 +65,15 @@ class InterviewDetailsFragment : Fragment() {
     private fun initToolbar() {
         binding.toolbar.setNavigationOnClickListener {
             navigator.goBack()
+        }
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menuEditInterview -> {
+                    navigator.navigateToEditInterviewScreen(REQUEST_KEY_EDIT_INTERVIEW, interview)
+                    true
+                }
+                else -> false
+            }
         }
     }
 
