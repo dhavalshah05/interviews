@@ -9,7 +9,10 @@ import com.template.app.domain.interviewers.models.Interviewer
 import com.template.app.domain.managers.models.Manager
 import com.template.app.ui.common.navigator.AppNavigator
 import com.template.app.util.bundle.getParcelableValueOrError
+import com.template.app.util.bundle.getSerializableValueOrError
+import com.template.app.util.date.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -18,6 +21,7 @@ class AddInterviewFragment : Fragment() {
     companion object {
         private const val REQUEST_KEY_SELECT_INTERVIEWER = "select_interviewer"
         private const val REQUEST_KEY_SELECT_MANAGER = "select_manager"
+        private const val REQUEST_KEY_SELECT_DATE = "select_date"
     }
 
     @Inject
@@ -28,19 +32,11 @@ class AddInterviewFragment : Fragment() {
 
     private var selectedInterviewer: Interviewer? = null
     private var selectedManager: Manager? = null
+    private var selectedDate: Date? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_SELECT_INTERVIEWER, this) { _, result ->
-            val interviewer: Interviewer = result.getParcelableValueOrError("interviewer")
-            selectedInterviewer = interviewer
-            binding.interviewer.setText(interviewer.name)
-        }
-        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_SELECT_MANAGER, this) { _, result ->
-            val manager: Manager = result.getParcelableValueOrError("manager")
-            selectedManager = manager
-            binding.hrManager.setText(manager.name)
-        }
+        observeFragmentResults()
     }
 
     override fun onCreateView(
@@ -82,6 +78,35 @@ class AddInterviewFragment : Fragment() {
         }
     }
 
+    private fun observeFragmentResults() {
+        parentFragmentManager.setFragmentResultListener(
+            REQUEST_KEY_SELECT_INTERVIEWER,
+            this
+        ) { _, result ->
+            val interviewer: Interviewer = result.getParcelableValueOrError("interviewer")
+            selectedInterviewer = interviewer
+            binding.interviewer.setText(interviewer.name)
+        }
+        parentFragmentManager.setFragmentResultListener(
+            REQUEST_KEY_SELECT_MANAGER,
+            this
+        ) { _, result ->
+            val manager: Manager = result.getParcelableValueOrError("manager")
+            selectedManager = manager
+            binding.hrManager.setText(manager.name)
+        }
+        parentFragmentManager.setFragmentResultListener(
+            REQUEST_KEY_SELECT_DATE,
+            this
+        ) { _, result ->
+            val date: Date = result.getSerializableValueOrError("date")
+            selectedDate = date
+            val formattedDate =
+                DateUtils.format(date, outFormat = DateUtils.DateFormat.PRIMARY_DATE)
+            binding.interviewDate.setText(formattedDate)
+        }
+    }
+
     private fun registerWindowInsetListener() {
         binding.root.setOnApplyWindowInsetsListener { _, windowInsets ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -116,5 +141,13 @@ class AddInterviewFragment : Fragment() {
         binding.hrManager.setOnClickListener {
             navigator.navigateToSelectManagerScreen(REQUEST_KEY_SELECT_MANAGER, selectedManager?.id)
         }
+
+        binding.interviewDate.setOnClickListener {
+            openDatePicker()
+        }
+    }
+
+    private fun openDatePicker() {
+        navigator.navigateToSelectDateScreen(REQUEST_KEY_SELECT_DATE)
     }
 }

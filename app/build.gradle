@@ -89,4 +89,7 @@ dependencies {
 
     // FragNav
     implementation 'com.ncapdevi:frag-nav:3.3.0'
+
+    // DatePicker
+    implementation 'com.github.drawers:SpinnerDatePicker:2.0.1'
 }
