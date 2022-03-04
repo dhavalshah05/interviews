@@ -2,15 +2,24 @@ package com.template.app.ui.addinterview
 
 import android.os.Build
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.*
 import androidx.fragment.app.Fragment
+import com.template.app.R
 import com.template.app.databinding.AddInterviewFragmentBinding
 import com.template.app.domain.interviewers.models.Interviewer
+import com.template.app.domain.interviews.models.Interview
+import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.domain.managers.models.Manager
+import com.template.app.exception.ApplicationException
 import com.template.app.ui.common.navigator.AppNavigator
+import com.template.app.util.alert.AlertNotification
 import com.template.app.util.bundle.getParcelableValueOrError
 import com.template.app.util.bundle.getSerializableValueOrError
+import com.template.app.util.bundle.getStringValueOrError
 import com.template.app.util.date.DateUtils
+import com.template.app.util.edittext.DecimalDigitsInputFilter
+import com.template.app.util.validator.Validator
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import javax.inject.Inject
@@ -22,10 +31,24 @@ class AddInterviewFragment : Fragment() {
         private const val REQUEST_KEY_SELECT_INTERVIEWER = "select_interviewer"
         private const val REQUEST_KEY_SELECT_MANAGER = "select_manager"
         private const val REQUEST_KEY_SELECT_DATE = "select_date"
+
+        private const val BUNDLE_REQUEST_KEY_ADD_INTERVIEW = "REQUEST_KEY_ADD_INTERVIEW"
+
+        fun createBundle(requestKeyAddInterview: String): Bundle {
+            return Bundle().apply {
+                putString(BUNDLE_REQUEST_KEY_ADD_INTERVIEW, requestKeyAddInterview)
+            }
+        }
     }
 
     @Inject
     lateinit var navigator: AppNavigator
+
+    @Inject
+    lateinit var validator: Validator
+
+    @Inject
+    lateinit var alert: AlertNotification
 
     private var _binding: AddInterviewFragmentBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +56,10 @@ class AddInterviewFragment : Fragment() {
     private var selectedInterviewer: Interviewer? = null
     private var selectedManager: Manager? = null
     private var selectedDate: Date? = null
+
+    private val requestKeyAddInterview: String by lazy {
+        arguments.getStringValueOrError(BUNDLE_REQUEST_KEY_ADD_INTERVIEW)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +78,7 @@ class AddInterviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = AddInterviewFragmentBinding.bind(view)
         registerWindowInsetListener()
+        binding.experience.filters = arrayOf<InputFilter>(DecimalDigitsInputFilter(2, 2))
         initToolbar()
         initViewListeners()
     }
@@ -143,11 +171,54 @@ class AddInterviewFragment : Fragment() {
         }
 
         binding.interviewDate.setOnClickListener {
-            openDatePicker()
+            navigator.navigateToSelectDateScreen(REQUEST_KEY_SELECT_DATE)
+        }
+
+        binding.buttonAdd.setOnClickListener {
+            validateAndContinue()
         }
     }
 
-    private fun openDatePicker() {
-        navigator.navigateToSelectDateScreen(REQUEST_KEY_SELECT_DATE)
+    private fun validateAndContinue() {
+        try {
+            validator.submit(binding.candidateName)
+                .checkEmpty().errorMessage(getString(R.string.validation_candidate_name_empty))
+                .check()
+
+            validator.submit(binding.experience)
+                .checkEmpty().errorMessage(getString(R.string.validation_experience_empty))
+                .check()
+
+            val interviewDate = selectedDate ?: throw ApplicationException(getString(R.string.validation_select_interview_date))
+            val manager = selectedManager ?: throw ApplicationException(getString(R.string.validation_select_manager))
+            val interviewer = selectedInterviewer ?: throw ApplicationException(getString(R.string.validation_select_interviewer))
+
+            val interview = Interview(
+                id = 0L,
+                candidateName = binding.candidateName.text.toString(),
+                experience = binding.experience.text.toString(),
+                interviewDate = interviewDate.time,
+                result = InterviewResult.PENDING,
+                interviewer = interviewer,
+                manager = manager,
+                interviewComments = "",
+                practicalComments = "",
+                practicalLink = ""
+            )
+
+            setResult(interview)
+        } catch (e: ApplicationException) {
+            e.printStackTrace()
+            val message = e.message ?: return
+            alert.showErrorMessage(activity = requireActivity(), message = message)
+        }
+    }
+
+    private fun setResult(interview: Interview) {
+        val bundle = Bundle()
+        bundle.putParcelable("interview", interview)
+        parentFragmentManager.setFragmentResult(requestKeyAddInterview, bundle)
+        alert.showSuccessMessage(activity = requireActivity(), message = getString(R.string.alert_message_interview_added))
+        navigator.goBack()
     }
 }

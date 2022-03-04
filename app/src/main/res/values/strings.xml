@@ -32,4 +32,12 @@
     <string name="menu_filters">Filters</string>
     <string name="menu_settings">Settings</string>
 
+    <string name="validation_candidate_name_empty">Please enter candidate name</string>
+    <string name="validation_experience_empty">Please enter experience</string>
+    <string name="validation_select_interview_date">Please select interview date</string>
+    <string name="validation_select_manager">Please select HR manager</string>
+    <string name="validation_select_interviewer">Please select interviewer</string>
+
+    <string name="alert_message_interview_added">Interview added</string>
+
 </resources>

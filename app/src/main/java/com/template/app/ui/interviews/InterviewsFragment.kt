@@ -13,6 +13,7 @@ import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.domain.managers.models.Manager
 import com.template.app.ui.common.navigator.AppNavigator
+import com.template.app.util.bundle.getParcelableValueOrError
 import com.template.app.util.display.DisplayMetrics
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -20,11 +21,28 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class InterviewsFragment : Fragment() {
 
+    companion object {
+        private const val REQUEST_KEY_ADD_INTERVIEW = "add_interview"
+    }
+
     @Inject
     lateinit var navigator: AppNavigator
 
     private var _binding: InterviewsFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var adapter: InterviewsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adapter = InterviewsAdapter()
+        adapter.setListener(interviewsAdapterListener)
+
+        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_ADD_INTERVIEW, this) { _, result ->
+            val interview: Interview = result.getParcelableValueOrError("interview")
+            adapter.appendItemsAt(0, listOf(interview))
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +63,7 @@ class InterviewsFragment : Fragment() {
 
     private fun initViewListeners() {
         binding.buttonAddNew.setOnClickListener {
-            navigator.navigateToAddInterviewScreen()
+            navigator.navigateToAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
         }
     }
 
@@ -77,8 +95,6 @@ class InterviewsFragment : Fragment() {
 
     private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(requireContext())
-        val adapter = InterviewsAdapter()
-        adapter.setListener(interviewsAdapterListener)
         binding.recyclerViewInterviews.layoutManager = layoutManager
         binding.recyclerViewInterviews.adapter = adapter
         adapter.replaceItems(getDummyInterviews())

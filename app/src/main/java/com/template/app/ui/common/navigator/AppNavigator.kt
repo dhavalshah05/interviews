@@ -25,8 +25,10 @@ class AppNavigator(
         fragNavController.pushFragment(InterviewersFragment())
     }
 
-    fun navigateToAddInterviewScreen() {
-        fragNavController.pushFragment(AddInterviewFragment())
+    fun navigateToAddInterviewScreen(requestKeyAddInterview: String) {
+        val fragment = AddInterviewFragment()
+        fragment.arguments = AddInterviewFragment.createBundle(requestKeyAddInterview)
+        fragNavController.pushFragment(fragment)
     }
 
     fun navigateToSelectInterviewerScreen(requestKeySelectInterviewer: String, interviewerId: Long?) {
