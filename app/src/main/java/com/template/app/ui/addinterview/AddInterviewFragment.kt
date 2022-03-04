@@ -5,18 +5,35 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.template.app.databinding.AddInterviewFragmentBinding
+import com.template.app.domain.interviewers.models.Interviewer
 import com.template.app.ui.common.navigator.AppNavigator
+import com.template.app.util.bundle.getParcelableValueOrError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddInterviewFragment : Fragment() {
 
+    companion object {
+        private const val REQUEST_KEY_SELECT_INTERVIEWER = "select_interviewer"
+    }
+
     @Inject
     lateinit var navigator: AppNavigator
 
     private var _binding: AddInterviewFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private var selectedInterviewer: Interviewer? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_SELECT_INTERVIEWER, this) { _, result ->
+            val interviewer: Interviewer = result.getParcelableValueOrError("interviewer")
+            selectedInterviewer = interviewer
+            binding.interviewer.setText(interviewer.name)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,6 +101,8 @@ class AddInterviewFragment : Fragment() {
     }
 
     private fun initViewListeners() {
-
+        binding.interviewer.setOnClickListener {
+            navigator.navigateToSelectInterviewerScreen(REQUEST_KEY_SELECT_INTERVIEWER, selectedInterviewer?.id)
+        }
     }
 }

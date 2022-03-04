@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 abstract class Navigator(
-    private val fragmentManager: FragmentManager
+    protected val fragmentManager: FragmentManager
 ) {
 
     protected lateinit var fragNavController: FragNavController
