@@ -1,5 +1,6 @@
 package com.template.app.ui.interviews
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.template.app.databinding.InterviewCardBinding
@@ -47,7 +48,11 @@ class InterviewsAdapter : BaseRecyclerViewAdapter<Interview, InterviewsAdapter.V
             binding.textViewName.text = item.candidateName
             binding.interviewerName.text = item.interviewer.name
             binding.textViewExperience.text = item.experience
-            binding.textViewResult.text = getString(UiInterviewResult.from(item.result).textResId)
+
+            val uiInterviewResult = UiInterviewResult.from(item.result)
+            binding.textViewResult.text = getString(uiInterviewResult.textResId)
+            binding.textViewResult.backgroundTintList = ColorStateList.valueOf(getColor(uiInterviewResult.bgColorResId))
+            binding.textViewResult.setTextColor(getColor(uiInterviewResult.textColorResId))
 
             binding.textViewDate.text = DateUtils.format(
                 inputDate = item.interviewDate,

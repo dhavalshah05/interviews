@@ -15,6 +15,9 @@
 
     <color name="green">#1BB252</color>
     <color name="red">#B23F1B</color>
+    <color name="orange">#D97E23</color>
+    <color name="greenYellow">#969633</color>
+    <color name="grey">#E5E5E5</color>
 
     <color name="cardBackground">#F0F3FD</color>
     <color name="cardBorder">#A0A9B9</color>

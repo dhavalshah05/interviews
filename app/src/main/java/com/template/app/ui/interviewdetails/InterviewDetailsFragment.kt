@@ -1,9 +1,11 @@
 package com.template.app.ui.interviewdetails
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.template.app.databinding.InterviewDetailsFragmentBinding
 import com.template.app.domain.interviews.models.Interview
@@ -84,11 +86,16 @@ class InterviewDetailsFragment : Fragment() {
 
     private fun bindInterview(interview: Interview) {
         binding.candidateName.text = interview.candidateName
-        binding.textViewResult.text = UiInterviewResult.from(interview.result).name
         binding.interviewDate.text = DateUtils.format(inputDate = interview.interviewDate, outFormat = DateUtils.DateFormat.PRIMARY_DATE)
         binding.experience.text = interview.experience
         binding.interviewer.text = interview.interviewer.name
         binding.manager.text = interview.manager.name
+
+        // interview result
+        val uiInterviewResult = UiInterviewResult.from(interview.result)
+        binding.textViewResult.text = getString(uiInterviewResult.textResId)
+        binding.textViewResult.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), uiInterviewResult.bgColorResId))
+        binding.textViewResult.setTextColor(ContextCompat.getColor(requireContext(), uiInterviewResult.textColorResId))
 
         // interview comments
         if (interview.interviewComments.isNotBlank()) {
