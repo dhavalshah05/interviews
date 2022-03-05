@@ -6,22 +6,4 @@
         <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/primary</item>
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
-
-    <style name="DatePickerDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowTitleStyle">@style/DatePickerDialogTitle</item>
-        <item name="buttonBarPositiveButtonStyle">@style/DatePickerDialogButton</item>
-        <item name="buttonBarNegativeButtonStyle">@style/DatePickerDialogButton</item>
-    </style>
-
-    <style name="DatePickerDialogTitle" parent="Text.Primary.SemiBold">
-        <item name="android:textSize">@dimen/_20dp</item>
-        <item name="android:textColor">@color/textPrimary</item>
-        <item name="fontFamily">@font/poppins_semi_bold</item>
-    </style>
-
-    <style name="DatePickerDialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textSize">@dimen/_14dp</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="fontFamily">@font/poppins_regular</item>
-    </style>
 </resources>

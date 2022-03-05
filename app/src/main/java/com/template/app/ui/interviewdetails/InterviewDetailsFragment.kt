@@ -24,6 +24,7 @@ class InterviewDetailsFragment : Fragment() {
     companion object {
         private const val REQUEST_KEY_EDIT_INTERVIEW = "edit_interview"
         private const val REQUEST_KEY_SELECT_RESULT = "select_result"
+        private const val REQUEST_KEY_DELETE_INTERVIEW_CONFIRM = "delete_interview_confirm"
         private const val BUNDLE_INTERVIEW = "INTERVIEW"
 
         fun createBundle(interview: Interview): Bundle {
@@ -48,6 +49,9 @@ class InterviewDetailsFragment : Fragment() {
             val interviewResult: InterviewResult = result.getParcelableValueOrError("interview_result")
             interview = interview.copy(result = interviewResult)
             bindInterviewResult(interviewResult)
+        }
+        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_DELETE_INTERVIEW_CONFIRM, this) { _, _ ->
+            navigator.goBack()
         }
     }
 
@@ -80,6 +84,10 @@ class InterviewDetailsFragment : Fragment() {
             when (it.itemId) {
                 R.id.menuEditInterview -> {
                     navigator.openEditInterviewScreen(REQUEST_KEY_EDIT_INTERVIEW, interview)
+                    true
+                }
+                R.id.menuDeleteInterview -> {
+                    navigator.openDeleteInterviewConfirmationScreen(REQUEST_KEY_DELETE_INTERVIEW_CONFIRM)
                     true
                 }
                 else -> false

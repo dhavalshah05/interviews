@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowTitleStyle">@style/AlertDialogTitle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/AlertDialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/AlertDialogButton</item>
+
+        <!--To change color and font of alert dialog message-->
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+    </style>
+
+    <style name="AlertDialogTitle" parent="Text.Primary.SemiBold">
+        <item name="android:textSize">@dimen/_20dp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="fontFamily">@font/poppins_semi_bold</item>
+    </style>
+
+    <style name="AlertDialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textSize">@dimen/_14dp</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+</resources>

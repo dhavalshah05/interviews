@@ -41,7 +41,7 @@ class SelectDateDialog : DialogFragment() {
                 notifyParent(selectedYear, selectedMonthOfYear, selectedDayOfMonth)
             }
             .spinnerTheme(R.style.DatePickerSpinner)
-            .dialogTheme(R.style.DatePickerDialog)
+            .dialogTheme(R.style.AlertDialog)
             .showTitle(true)
             .showDaySpinner(true)
             .minDate(year, month, day)
