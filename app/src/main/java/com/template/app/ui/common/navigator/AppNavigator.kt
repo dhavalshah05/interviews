@@ -1,6 +1,5 @@
 package com.template.app.ui.common.navigator
 
-import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
@@ -19,54 +18,54 @@ class AppNavigator(
     fragmentManager: FragmentManager
 ) : Navigator(fragmentManager) {
 
-    fun navigateToSettingsScreen() {
+    fun openSettingsScreen() {
         fragNavController.pushFragment(SettingsFragment())
     }
 
-    fun navigateToManagersScreen() {
+    fun openManagersScreen() {
         fragNavController.pushFragment(ManagersFragment())
     }
 
-    fun navigateToInterviewersScreen() {
+    fun openInterviewersScreen() {
         fragNavController.pushFragment(InterviewersFragment())
     }
 
-    fun navigateToAddInterviewScreen(requestKeyAddInterview: String) {
+    fun openAddInterviewScreen(requestKeyAddInterview: String) {
         val fragment = AddInterviewFragment()
         fragment.arguments = AddInterviewFragment.createBundle(requestKeyAddInterview)
         fragNavController.pushFragment(fragment)
     }
 
-    fun navigateToEditInterviewScreen(requestKeyEditInterview: String, interview: Interview) {
+    fun openEditInterviewScreen(requestKeyEditInterview: String, interview: Interview) {
         val fragment = EditInterviewFragment().apply {
             arguments = EditInterviewFragment.createBundle(requestKeyEditInterview, interview)
         }
         fragNavController.pushFragment(fragment)
     }
 
-    fun navigateToSelectInterviewerScreen(requestKeySelectInterviewer: String, interviewerId: Long?) {
+    fun openSelectInterviewerScreen(requestKeySelectInterviewer: String, interviewerId: Long?) {
         val dialog = SelectInterviewerBottomSheet.newInstance(requestKeySelectInterviewer, interviewerId)
         dialog.show(fragmentManager, SelectInterviewerBottomSheet.TAG)
     }
 
-    fun navigateToSelectManagerScreen(requestKeySelectManager: String, managerId: Long?) {
+    fun openSelectManagerScreen(requestKeySelectManager: String, managerId: Long?) {
         val dialog = SelectManagerBottomSheet.newInstance(requestKeySelectManager, managerId)
         dialog.show(fragmentManager, SelectManagerBottomSheet.TAG)
     }
 
-    fun navigateToSelectDateScreen(requestKeySelectDate: String) {
+    fun openSelectDateScreen(requestKeySelectDate: String) {
         val dialog = SelectDateDialog.newInstance(requestKeySelectDate)
         dialog.show(fragmentManager, SelectDateDialog.TAG)
     }
 
-    fun navigateToInterviewDetailsScreen(interview: Interview) {
+    fun openInterviewDetailsScreen(interview: Interview) {
         val fragment = InterviewDetailsFragment().apply {
             arguments = InterviewDetailsFragment.createBundle(interview)
         }
         fragNavController.pushFragment(fragment)
     }
 
-    fun navigateToSelectResultScreen(requestKeySelectResult: String, interviewResult: InterviewResult) {
+    fun openSelectResultScreen(requestKeySelectResult: String, interviewResult: InterviewResult) {
         val dialog = SelectResultBottomSheet.newInstance(requestKeySelectResult, interviewResult)
         dialog.show(fragmentManager, SelectResultBottomSheet.TAG)
     }

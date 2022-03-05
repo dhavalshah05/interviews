@@ -187,15 +187,15 @@ class EditInterviewFragment : Fragment() {
 
     private fun initViewListeners() {
         binding.interviewer.setOnClickListener {
-            navigator.navigateToSelectInterviewerScreen(REQUEST_KEY_SELECT_INTERVIEWER, selectedInterviewer?.id)
+            navigator.openSelectInterviewerScreen(REQUEST_KEY_SELECT_INTERVIEWER, selectedInterviewer?.id)
         }
 
         binding.hrManager.setOnClickListener {
-            navigator.navigateToSelectManagerScreen(REQUEST_KEY_SELECT_MANAGER, selectedManager?.id)
+            navigator.openSelectManagerScreen(REQUEST_KEY_SELECT_MANAGER, selectedManager?.id)
         }
 
         binding.interviewDate.setOnClickListener {
-            navigator.navigateToSelectDateScreen(REQUEST_KEY_SELECT_DATE)
+            navigator.openSelectDateScreen(REQUEST_KEY_SELECT_DATE)
         }
 
         binding.buttonAdd.setOnClickListener {

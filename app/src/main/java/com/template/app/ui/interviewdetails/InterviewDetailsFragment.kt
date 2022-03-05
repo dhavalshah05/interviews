@@ -79,7 +79,7 @@ class InterviewDetailsFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menuEditInterview -> {
-                    navigator.navigateToEditInterviewScreen(REQUEST_KEY_EDIT_INTERVIEW, interview)
+                    navigator.openEditInterviewScreen(REQUEST_KEY_EDIT_INTERVIEW, interview)
                     true
                 }
                 else -> false
@@ -98,7 +98,7 @@ class InterviewDetailsFragment : Fragment() {
             toggleViewVisibility(binding.practicalLink)
         }
         binding.buttonEditResult.setOnClickListener {
-            navigator.navigateToSelectResultScreen(REQUEST_KEY_SELECT_RESULT, interview.result)
+            navigator.openSelectResultScreen(REQUEST_KEY_SELECT_RESULT, interview.result)
         }
     }
 

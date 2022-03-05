@@ -63,7 +63,7 @@ class InterviewsFragment : Fragment() {
 
     private fun initViewListeners() {
         binding.buttonAddNew.setOnClickListener {
-            navigator.navigateToAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
+            navigator.openAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
         }
     }
 
@@ -89,7 +89,7 @@ class InterviewsFragment : Fragment() {
 
     private val interviewsAdapterListener = object : InterviewsAdapter.Listener {
         override fun onInterviewClick(item: Interview) {
-            navigator.navigateToInterviewDetailsScreen(item)
+            navigator.openInterviewDetailsScreen(item)
         }
     }
 
@@ -116,7 +116,7 @@ class InterviewsFragment : Fragment() {
     }
 
     private fun openSettingsScreen() {
-        navigator.navigateToSettingsScreen()
+        navigator.openSettingsScreen()
     }
 
     private fun getDummyInterviews(): List<Interview> {

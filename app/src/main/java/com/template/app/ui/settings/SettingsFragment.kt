@@ -47,10 +47,10 @@ class SettingsFragment : Fragment() {
 
     private fun initViewListeners() {
         binding.textViewManagers.setOnClickListener {
-            navigator.navigateToManagersScreen()
+            navigator.openManagersScreen()
         }
         binding.textViewInterviewers.setOnClickListener {
-            navigator.navigateToInterviewersScreen()
+            navigator.openInterviewersScreen()
         }
     }
 }
