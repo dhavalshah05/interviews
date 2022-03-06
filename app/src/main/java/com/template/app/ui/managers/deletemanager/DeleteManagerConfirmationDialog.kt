@@ -1,4 +1,4 @@
-package com.template.app.ui.deletemanager
+package com.template.app.ui.managers.deletemanager
 
 import android.app.Dialog
 import android.os.Bundle

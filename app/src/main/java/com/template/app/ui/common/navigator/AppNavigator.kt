@@ -5,17 +5,17 @@ import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.addinterview.AddInterviewFragment
 import com.template.app.ui.addinterviewer.AddInterviewerBottomSheet
-import com.template.app.ui.addmanager.AddManagerBottomSheet
+import com.template.app.ui.managers.addmanager.AddManagerBottomSheet
 import com.template.app.ui.deleteinterview.DeleteInterviewConfirmationDialog
 import com.template.app.ui.deleteinterviewer.DeleteInterviewerConfirmationDialog
-import com.template.app.ui.deletemanager.DeleteManagerConfirmationDialog
+import com.template.app.ui.managers.deletemanager.DeleteManagerConfirmationDialog
 import com.template.app.ui.editinterview.EditInterviewFragment
 import com.template.app.ui.interviewdetails.InterviewDetailsFragment
 import com.template.app.ui.selectdate.SelectDateDialog
 import com.template.app.ui.interviewers.InterviewersFragment
 import com.template.app.ui.managers.ManagersFragment
 import com.template.app.ui.selectinterviewer.SelectInterviewerBottomSheet
-import com.template.app.ui.selectmanager.SelectManagerBottomSheet
+import com.template.app.ui.managers.selectmanager.SelectManagerBottomSheet
 import com.template.app.ui.selectresult.SelectResultBottomSheet
 import com.template.app.ui.settings.SettingsFragment
 

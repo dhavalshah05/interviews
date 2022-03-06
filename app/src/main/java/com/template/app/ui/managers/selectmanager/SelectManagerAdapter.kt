@@ -1,4 +1,4 @@
-package com.template.app.ui.selectmanager
+package com.template.app.ui.managers.selectmanager
 
 import android.view.LayoutInflater
 import android.view.View
