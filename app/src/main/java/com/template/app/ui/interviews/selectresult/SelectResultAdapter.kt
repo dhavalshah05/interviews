@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.template.app.databinding.SelectResultItemBinding
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.common.models.Selectable
-import com.template.app.ui.common.models.UiInterviewResult
+import com.template.app.ui.interviews.models.UiInterviewResult
 import com.template.app.util.superadapter.BaseRecyclerViewAdapter
 import com.template.app.util.superadapter.viewholder.BaseViewHolder
 

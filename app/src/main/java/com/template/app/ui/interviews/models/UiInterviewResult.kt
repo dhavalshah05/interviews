@@ -1,4 +1,4 @@
-package com.template.app.ui.common.models
+package com.template.app.ui.interviews.models
 
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
