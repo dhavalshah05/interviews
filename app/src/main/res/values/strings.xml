@@ -50,6 +50,8 @@
 
     <string name="dialog_delete_interview_title">Delete interview</string>
     <string name="dialog_delete_interview_message">Are you sure you want to delete this interview?</string>
+    <string name="dialog_delete_interviewer_title">Delete interviewer</string>
+    <string name="dialog_delete_interviewer_message">Are you sure you want to delete this interviewer?</string>
 
     <string name="alert_message_interview_added">Interview added</string>
     <string name="alert_message_interview_updated">Interview updated</string>

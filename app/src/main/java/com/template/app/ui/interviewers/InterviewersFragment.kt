@@ -16,6 +16,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class InterviewersFragment : Fragment() {
 
+    companion object {
+        private const val REQUEST_KEY_DELETE_INTERVIEWER_CONFIRM = "delete_interviewer_confirm"
+    }
+
     @Inject
     lateinit var navigator: AppNavigator
 
@@ -52,7 +56,7 @@ class InterviewersFragment : Fragment() {
 
     private val interviewersAdapterListener = object : InterviewersAdapter.Listener {
         override fun onDeleteInterviewerClick(item: Interviewer) {
-
+            navigator.openDeleteInterviewerConfirmationScreen(REQUEST_KEY_DELETE_INTERVIEWER_CONFIRM)
         }
     }
 
