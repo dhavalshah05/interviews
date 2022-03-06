@@ -5,6 +5,7 @@ import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.addinterview.AddInterviewFragment
 import com.template.app.ui.addinterviewer.AddInterviewerBottomSheet
+import com.template.app.ui.addmanager.AddManagerBottomSheet
 import com.template.app.ui.deleteinterview.DeleteInterviewConfirmationDialog
 import com.template.app.ui.editinterview.EditInterviewFragment
 import com.template.app.ui.interviewdetails.InterviewDetailsFragment
@@ -80,6 +81,11 @@ class AppNavigator(
     fun openAddInterviewerScreen() {
         val dialog = AddInterviewerBottomSheet.newInstance()
         dialog.show(fragmentManager, AddInterviewerBottomSheet.TAG)
+    }
+
+    fun openAddManagerScreen() {
+        val dialog = AddManagerBottomSheet.newInstance()
+        dialog.show(fragmentManager, AddManagerBottomSheet.TAG)
     }
 
     /*fun switchToTab() {

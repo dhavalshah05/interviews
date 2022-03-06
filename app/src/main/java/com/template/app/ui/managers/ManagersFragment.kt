@@ -36,6 +36,7 @@ class ManagersFragment : Fragment() {
         setRecyclerViewPadding()
         initToolbar()
         initRecyclerView()
+        initViewListeners()
     }
 
     override fun onDestroyView() {
@@ -76,6 +77,12 @@ class ManagersFragment : Fragment() {
         binding.recyclerViewManagers.layoutManager = layoutManager
         binding.recyclerViewManagers.adapter = adapter
         adapter.replaceItems(getDummyManagers())
+    }
+
+    private fun initViewListeners() {
+        binding.buttonAddNew.setOnClickListener {
+            navigator.openAddManagerScreen()
+        }
     }
 
     private fun getDummyManagers(): List<Manager> {
