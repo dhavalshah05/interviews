@@ -8,6 +8,7 @@ import com.template.app.ui.addinterviewer.AddInterviewerBottomSheet
 import com.template.app.ui.addmanager.AddManagerBottomSheet
 import com.template.app.ui.deleteinterview.DeleteInterviewConfirmationDialog
 import com.template.app.ui.deleteinterviewer.DeleteInterviewerConfirmationDialog
+import com.template.app.ui.deletemanager.DeleteManagerConfirmationDialog
 import com.template.app.ui.editinterview.EditInterviewFragment
 import com.template.app.ui.interviewdetails.InterviewDetailsFragment
 import com.template.app.ui.selectdate.SelectDateDialog
@@ -92,6 +93,11 @@ class AppNavigator(
     fun openDeleteInterviewerConfirmationScreen(requestKeyDeleteInterviewerConfirm: String) {
         val dialog = DeleteInterviewerConfirmationDialog.newInstance(requestKeyDeleteInterviewerConfirm)
         dialog.show(fragmentManager, DeleteInterviewerConfirmationDialog.TAG)
+    }
+
+    fun openDeleteManagerConfirmationScreen(requestKeyDeleteManagerConfirm: String) {
+        val dialog = DeleteManagerConfirmationDialog.newInstance(requestKeyDeleteManagerConfirm)
+        dialog.show(fragmentManager, DeleteManagerConfirmationDialog.TAG)
     }
 
     /*fun switchToTab() {

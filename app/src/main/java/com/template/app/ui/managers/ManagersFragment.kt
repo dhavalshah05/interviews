@@ -16,6 +16,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ManagersFragment : Fragment() {
 
+    companion object {
+        private const val REQUEST_KEY_DELETE_MANAGER_CONFIRM = "delete_manager_confirm"
+    }
+
     @Inject
     lateinit var navigator: AppNavigator
 
@@ -52,7 +56,7 @@ class ManagersFragment : Fragment() {
 
     private val managersAdapterListener = object : ManagersAdapter.Listener {
         override fun onDeleteManagerClick(item: Manager) {
-
+            navigator.openDeleteManagerConfirmationScreen(requestKeyDeleteManagerConfirm = REQUEST_KEY_DELETE_MANAGER_CONFIRM)
         }
     }
 
