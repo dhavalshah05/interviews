@@ -1,4 +1,4 @@
-package com.template.app.ui.selectresult
+package com.template.app.ui.interviews.selectresult
 
 import android.view.LayoutInflater
 import android.view.View

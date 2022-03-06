@@ -1,4 +1,4 @@
-package com.template.app.ui.editinterview
+package com.template.app.ui.interviews.editinterview
 
 import android.os.Build
 import android.os.Bundle

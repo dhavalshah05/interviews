@@ -3,20 +3,20 @@ package com.template.app.ui.common.navigator
 import androidx.fragment.app.FragmentManager
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
-import com.template.app.ui.addinterview.AddInterviewFragment
+import com.template.app.ui.interviews.addinterview.AddInterviewFragment
 import com.template.app.ui.interviewers.addinterviewer.AddInterviewerBottomSheet
 import com.template.app.ui.managers.addmanager.AddManagerBottomSheet
-import com.template.app.ui.deleteinterview.DeleteInterviewConfirmationDialog
+import com.template.app.ui.interviews.deleteinterview.DeleteInterviewConfirmationDialog
 import com.template.app.ui.interviewers.deleteinterviewer.DeleteInterviewerConfirmationDialog
 import com.template.app.ui.managers.deletemanager.DeleteManagerConfirmationDialog
-import com.template.app.ui.editinterview.EditInterviewFragment
-import com.template.app.ui.interviewdetails.InterviewDetailsFragment
+import com.template.app.ui.interviews.editinterview.EditInterviewFragment
+import com.template.app.ui.interviews.interviewdetails.InterviewDetailsFragment
 import com.template.app.ui.selectdate.SelectDateDialog
 import com.template.app.ui.interviewers.InterviewersFragment
 import com.template.app.ui.managers.ManagersFragment
 import com.template.app.ui.interviewers.selectinterviewer.SelectInterviewerBottomSheet
 import com.template.app.ui.managers.selectmanager.SelectManagerBottomSheet
-import com.template.app.ui.selectresult.SelectResultBottomSheet
+import com.template.app.ui.interviews.selectresult.SelectResultBottomSheet
 import com.template.app.ui.settings.SettingsFragment
 
 class AppNavigator(

@@ -1,4 +1,4 @@
-package com.template.app.ui.deleteinterview
+package com.template.app.ui.interviews.deleteinterview
 
 import android.app.Dialog
 import android.os.Bundle

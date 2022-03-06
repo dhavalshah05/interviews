@@ -1,4 +1,4 @@
-package com.template.app.ui.interviewdetails
+package com.template.app.ui.interviews.interviewdetails
 
 import android.content.res.ColorStateList
 import android.os.Bundle
