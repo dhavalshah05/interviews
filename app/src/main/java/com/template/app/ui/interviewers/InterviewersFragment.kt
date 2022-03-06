@@ -36,6 +36,7 @@ class InterviewersFragment : Fragment() {
         setRecyclerViewPadding()
         initToolbar()
         initRecyclerView()
+        initViewListeners()
     }
 
     override fun onDestroyView() {
@@ -77,6 +78,12 @@ class InterviewersFragment : Fragment() {
         binding.recyclerViewInterviewers.layoutManager = layoutInterviewer
         binding.recyclerViewInterviewers.adapter = adapter
         adapter.replaceItems(getDummyInterviewers())
+    }
+
+    private fun initViewListeners() {
+        binding.buttonAddNew.setOnClickListener {
+            navigator.openAddInterviewerScreen()
+        }
     }
 
     private fun getDummyInterviewers(): List<Interviewer> {

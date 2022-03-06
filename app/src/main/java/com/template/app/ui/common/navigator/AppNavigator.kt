@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentManager
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.addinterview.AddInterviewFragment
+import com.template.app.ui.addinterviewer.AddInterviewerBottomSheet
 import com.template.app.ui.deleteinterview.DeleteInterviewConfirmationDialog
 import com.template.app.ui.editinterview.EditInterviewFragment
 import com.template.app.ui.interviewdetails.InterviewDetailsFragment
@@ -74,6 +75,11 @@ class AppNavigator(
     fun openDeleteInterviewConfirmationScreen(requestKeyDeleteInterviewConfirm: String) {
         val dialog = DeleteInterviewConfirmationDialog.newInstance(requestKeyDeleteInterviewConfirm)
         dialog.show(fragmentManager, DeleteInterviewConfirmationDialog.TAG)
+    }
+
+    fun openAddInterviewerScreen() {
+        val dialog = AddInterviewerBottomSheet.newInstance()
+        dialog.show(fragmentManager, AddInterviewerBottomSheet.TAG)
     }
 
     /*fun switchToTab() {
