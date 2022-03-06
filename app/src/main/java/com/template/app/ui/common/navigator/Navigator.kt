@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.ncapdevi.fragnav.FragNavController
+import com.ncapdevi.fragnav.FragNavTransactionOptions
+import com.template.app.R
 import kotlin.reflect.KClass
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
@@ -50,7 +52,11 @@ abstract class Navigator(
         return if (fragNavController.isRootFragment) {
             false
         } else {
-            fragNavController.popFragment()
+            val options = FragNavTransactionOptions.newBuilder().apply {
+                popExitAnimation = R.anim.slide_out
+                popEnterAnimation = R.anim.fade_in
+            }
+            fragNavController.popFragment(options.build())
         }
     }
 

@@ -21,6 +21,7 @@ import com.template.app.util.date.DateUtils
 import com.template.app.util.edittext.DecimalDigitsInputFilter
 import com.template.app.util.validator.Validator
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
 
@@ -54,6 +55,8 @@ class EditInterviewFragment : Fragment() {
 
     private var _binding: EditInterviewFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private val scope = CoroutineScope(Dispatchers.Main.immediate)
 
     private var selectedInterviewer: Interviewer? = null
     private var selectedManager: Manager? = null
@@ -100,10 +103,14 @@ class EditInterviewFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().window.setDecorFitsSystemWindows(false)
-        } else {
-            requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
+        scope.launch {
+            delay(500)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                requireActivity().window.setDecorFitsSystemWindows(false)
+            } else {
+                requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+            }
         }
     }
 

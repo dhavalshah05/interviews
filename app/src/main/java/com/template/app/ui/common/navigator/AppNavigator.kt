@@ -1,6 +1,9 @@
 package com.template.app.ui.common.navigator
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.ncapdevi.fragnav.FragNavTransactionOptions
+import com.template.app.R
 import com.template.app.domain.interviews.models.Interview
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.interviews.addinterview.AddInterviewFragment
@@ -22,30 +25,37 @@ import com.template.app.ui.settings.SettingsFragment
 class AppNavigator(
     fragmentManager: FragmentManager
 ) : Navigator(fragmentManager) {
+    
+    private fun pushFragment(fragment: Fragment, options: FragNavTransactionOptions? = null) {
+        val defaultOptions = options ?: FragNavTransactionOptions.newBuilder().apply {
+            customAnimations(R.anim.slide_in, R.anim.fade_out)
+        }.build()
+        fragNavController.pushFragment(fragment, defaultOptions)        
+    }
 
     fun openSettingsScreen() {
-        fragNavController.pushFragment(SettingsFragment())
+        pushFragment(SettingsFragment())
     }
 
     fun openManagersScreen() {
-        fragNavController.pushFragment(ManagersFragment())
+        pushFragment(ManagersFragment())
     }
 
     fun openInterviewersScreen() {
-        fragNavController.pushFragment(InterviewersFragment())
+        pushFragment(InterviewersFragment())
     }
 
     fun openAddInterviewScreen(requestKeyAddInterview: String) {
         val fragment = AddInterviewFragment()
         fragment.arguments = AddInterviewFragment.createBundle(requestKeyAddInterview)
-        fragNavController.pushFragment(fragment)
+        pushFragment(fragment)
     }
 
     fun openEditInterviewScreen(requestKeyEditInterview: String, interview: Interview) {
         val fragment = EditInterviewFragment().apply {
             arguments = EditInterviewFragment.createBundle(requestKeyEditInterview, interview)
         }
-        fragNavController.pushFragment(fragment)
+        pushFragment(fragment)
     }
 
     fun openSelectInterviewerScreen(requestKeySelectInterviewer: String, interviewerId: Long?) {
@@ -67,7 +77,7 @@ class AppNavigator(
         val fragment = InterviewDetailsFragment().apply {
             arguments = InterviewDetailsFragment.createBundle(interview)
         }
-        fragNavController.pushFragment(fragment)
+        pushFragment(fragment)
     }
 
     fun openSelectResultScreen(requestKeySelectResult: String, interviewResult: InterviewResult) {
