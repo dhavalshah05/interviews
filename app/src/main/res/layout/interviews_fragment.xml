@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -32,18 +33,55 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/searchInterview"
+        style="@style/EditText.SingleLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20dp"
+        android:hint="@string/hint_search"
+        android:paddingStart="@dimen/_58dp"
+        android:paddingEnd="@dimen/_58dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/searchImage"
+        android:layout_width="@dimen/_58dp"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="@id/searchInterview"
+        app:layout_constraintStart_toStartOf="@id/searchInterview"
+        app:layout_constraintTop_toTopOf="@id/searchInterview"
+        app:srcCompat="@drawable/ic_search" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/crossButton"
+        android:layout_width="@dimen/_58dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/searchInterview"
+        app:layout_constraintEnd_toEndOf="@id/searchInterview"
+        app:layout_constraintTop_toTopOf="@id/searchInterview"
+        app:srcCompat="@drawable/ic_cross"
+        tools:visibility="visible" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewInterviews"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_20dp"
         android:clipToPadding="false"
+        android:overScrollMode="never"
         android:paddingStart="@dimen/_20dp"
         android:paddingEnd="@dimen/_20dp"
         android:paddingBottom="@dimen/_50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/searchInterview" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddNew"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.template.app.R
@@ -15,6 +16,7 @@ import com.template.app.domain.managers.models.Manager
 import com.template.app.ui.common.navigator.AppNavigator
 import com.template.app.util.bundle.getParcelableValueOrError
 import com.template.app.util.display.DisplayMetrics
+import com.template.app.util.keyboard.KeyboardVisibilityHandler
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -28,6 +30,9 @@ class InterviewsFragment : Fragment() {
     @Inject
     lateinit var navigator: AppNavigator
 
+    @Inject
+    lateinit var keyboardVisibilityHandler: KeyboardVisibilityHandler
+
     private var _binding: InterviewsFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -38,7 +43,10 @@ class InterviewsFragment : Fragment() {
         adapter = InterviewsAdapter()
         adapter.setListener(interviewsAdapterListener)
 
-        parentFragmentManager.setFragmentResultListener(REQUEST_KEY_ADD_INTERVIEW, this) { _, result ->
+        parentFragmentManager.setFragmentResultListener(
+            REQUEST_KEY_ADD_INTERVIEW,
+            this
+        ) { _, result ->
             val interview: Interview = result.getParcelableValueOrError("interview")
             adapter.appendItemsAt(0, listOf(interview))
         }
@@ -65,6 +73,22 @@ class InterviewsFragment : Fragment() {
         binding.buttonAddNew.setOnClickListener {
             navigator.openAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
         }
+        binding.searchInterview.doOnTextChanged { text, _, _, _ ->
+            onSearchTextChanged(text.toString())
+        }
+        binding.crossButton.setOnClickListener {
+            clearSearchText()
+        }
+    }
+
+    private fun clearSearchText() {
+        binding.searchInterview.text?.clear()
+        keyboardVisibilityHandler.hideKeyboard()
+        binding.searchInterview.clearFocus()
+    }
+
+    private fun onSearchTextChanged(text: String) {
+        binding.crossButton.visibility = if (text.isEmpty()) View.GONE else View.VISIBLE
     }
 
     private fun setRecyclerViewPadding() {
