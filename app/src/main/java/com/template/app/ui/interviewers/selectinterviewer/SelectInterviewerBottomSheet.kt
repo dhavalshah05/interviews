@@ -1,4 +1,4 @@
-package com.template.app.ui.selectinterviewer
+package com.template.app.ui.interviewers.selectinterviewer
 
 import android.os.Bundle
 import android.view.LayoutInflater

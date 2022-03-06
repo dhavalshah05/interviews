@@ -1,4 +1,4 @@
-package com.template.app.ui.deleteinterviewer
+package com.template.app.ui.interviewers.deleteinterviewer
 
 import android.app.Dialog
 import android.os.Bundle
