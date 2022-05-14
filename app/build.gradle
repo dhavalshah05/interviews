@@ -31,6 +31,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        compose true
     }
 
     compileOptions {
@@ -40,6 +41,10 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
     }
 }
 
@@ -92,4 +97,9 @@ dependencies {
 
     // DatePicker
     implementation 'com.github.drawers:SpinnerDatePicker:2.0.1'
+
+    // Compose
+    implementation 'androidx.compose.material:material:1.1.1'
+    debugImplementation "androidx.compose.ui:ui-tooling:1.1.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.1.1"
 }
