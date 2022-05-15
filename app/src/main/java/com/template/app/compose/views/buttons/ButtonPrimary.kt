@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.template.app.R
 import com.template.app.compose.fontPoppins
+import com.template.app.compose.views.texts.AppTextStyle
 
 @Preview(showBackground = true)
 @Composable
@@ -46,9 +47,7 @@ fun ButtonPrimary(
             Text(
                 text = text,
                 color = colorResource(id = R.color.white),
-                fontSize = 14.sp,
-                fontFamily = fontPoppins,
-                fontWeight = FontWeight.SemiBold
+                style = AppTextStyle.SemiBold
             )
         },
         colors = ButtonDefaults.buttonColors(

@@ -18,4 +18,11 @@ object AppTextStyle {
         platformStyle = PlatformTextStyle(includeFontPadding = false)
     )
 
+    @OptIn(ExperimentalTextApi::class)
+    val SemiBold = TextStyle.Default.copy(
+        fontSize = 14.sp,
+        fontFamily = fontPoppins,
+        fontWeight = FontWeight.SemiBold,
+        platformStyle = PlatformTextStyle(includeFontPadding = false)
+    )
 }
