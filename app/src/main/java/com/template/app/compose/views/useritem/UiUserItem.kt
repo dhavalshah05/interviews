@@ -63,6 +63,7 @@ fun UiUserItem(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_delete),
                         contentDescription = "Delete icon",
+                        tint = colorResource(id = R.color.primary)
                     )
                 }
             )
