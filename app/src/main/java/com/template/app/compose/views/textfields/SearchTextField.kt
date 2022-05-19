@@ -3,6 +3,7 @@ package com.template.app.compose.views.textfields
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -10,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -25,11 +27,13 @@ import com.template.app.compose.views.texts.AppTextStyle
 @Composable
 private fun PreviewSearchTextField() {
     val searchText = remember { mutableStateOf("") }
+    val focusManager = LocalFocusManager.current
     SearchTextField(
         value = searchText.value,
         onValueChange = { searchText.value = it },
         modifier = Modifier.padding(20.dp),
-        onClearClick = { searchText.value = "" }
+        onClearClick = { searchText.value = "" },
+        onDoneClick = { focusManager.clearFocus() }
     )
 }
 
@@ -39,6 +43,7 @@ fun SearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
     onClearClick: () -> Unit,
+    onDoneClick: () -> Unit
 ) {
     TextField(
         value = value,
@@ -50,6 +55,9 @@ fun SearchTextField(
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text,
             imeAction = ImeAction.Done
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = { onDoneClick.invoke() }
         ),
         placeholder = {
             Text(
