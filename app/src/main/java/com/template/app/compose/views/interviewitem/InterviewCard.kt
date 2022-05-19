@@ -13,9 +13,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,14 +32,20 @@ import com.template.app.util.date.DateUtils
 private fun PreviewInterviewCard() {
     InterviewCard(
         modifier = Modifier.padding(10.dp),
-        interview = PrototypeData.getInterview()
+        interview = PrototypeData.getInterview(),
+        onClick = {},
+        interviewResultStatusWidth = Dp.Infinity,
+        onInterviewResultStatusWidthUpdate = {}
     )
 }
 
 @Composable
 fun InterviewCard(
     modifier: Modifier = Modifier,
-    interview: Interview
+    interview: Interview,
+    onClick: () -> Unit,
+    interviewResultStatusWidth: Dp,
+    onInterviewResultStatusWidthUpdate: (Int) -> Unit
 ) {
     val date = remember(interview.interviewDate) {
         DateUtils.format(inputDate = interview.interviewDate, outFormat = DateUtils.DateFormat.PRIMARY_DATE)
@@ -51,7 +59,7 @@ fun InterviewCard(
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = rememberRipple(),
-                onClick = {}
+                onClick = onClick
             )
             .padding(20.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -111,6 +119,11 @@ fun InterviewCard(
                 interviewResult = interview.result,
                 fontSize = 10F,
                 modifier = Modifier.padding(top = 8.dp)
+                    .onGloballyPositioned {
+                        val width = it.size.width
+                        onInterviewResultStatusWidthUpdate(width)
+                    },
+                width = interviewResultStatusWidth
             )
         }
     }

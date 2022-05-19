@@ -6,6 +6,7 @@ import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.domain.managers.models.Manager
 
 object PrototypeData {
+
     fun getManagers(): List<Manager> {
         val result = mutableListOf<Manager>()
         for (index in 1 until 20) {
@@ -23,18 +24,38 @@ object PrototypeData {
         return result
     }
 
+    fun getInterviews(): List<Interview> {
+        val result = mutableListOf<Interview>()
+        for (i in 1..10) {
+            result.add(
+                Interview(
+                    id = i.toLong(),
+                    candidateName = "John Doe",
+                    experience = i.toString(),
+                    interviewDate = System.currentTimeMillis(),
+                    result = getInterviewResult(i),
+                    interviewer = getInterviewers().first(),
+                    manager = getManagers().first(),
+                    interviewComments = "Sample comments",
+                    practicalComments = "",
+                    practicalLink = ""
+                )
+            )
+        }
+        return result
+    }
+
+    private fun getInterviewResult(i: Int): InterviewResult {
+        return when (i % 5) {
+            4 -> InterviewResult.values()[4]
+            3 -> InterviewResult.values()[3]
+            2 -> InterviewResult.values()[2]
+            1 -> InterviewResult.values()[1]
+            else -> InterviewResult.values()[0]
+        }
+    }
+
     fun getInterview(): Interview {
-        return Interview(
-            id = 1L,
-            candidateName = "John Doe",
-            experience = "2.5",
-            interviewDate = System.currentTimeMillis(),
-            result = InterviewResult.REJECTED,
-            interviewer = getInterviewers().first(),
-            manager = getManagers().first(),
-            interviewComments = "Sample comments",
-            practicalComments = "",
-            practicalLink = ""
-        )
+        return getInterviews().first()
     }
 }
