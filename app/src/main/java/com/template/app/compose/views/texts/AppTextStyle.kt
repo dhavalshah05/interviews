@@ -15,11 +15,12 @@ object AppTextStyle {
         fontSize = 14.sp,
         fontFamily = fontPoppins,
         fontWeight = FontWeight.Regular,
-        platformStyle = PlatformTextStyle(includeFontPadding = false)
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
     )
 
     val SemiBold = Regular.copy(fontWeight = FontWeight.SemiBold)
 
     val Medium = Regular.copy(fontWeight = FontWeight.Medium)
 
+    val Bold = Regular.copy(fontWeight = FontWeight.Bold)
 }
