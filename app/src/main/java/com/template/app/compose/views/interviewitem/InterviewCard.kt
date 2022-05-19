@@ -118,7 +118,8 @@ fun InterviewCard(
             InterviewResultStatus(
                 interviewResult = interview.result,
                 fontSize = 10F,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier
+                    .padding(top = 8.dp)
                     .onGloballyPositioned {
                         val width = it.size.width
                         onInterviewResultStatusWidthUpdate(width)

@@ -53,7 +53,8 @@ class InterviewsFragment : Fragment() {
                     interviews = interviews.value,
                     onSettingsClick = onSettingsClick,
                     onSearchTextChange = onSearchTextChange,
-                    onInterviewCardClick = onInterviewCardClick
+                    onInterviewCardClick = onInterviewCardClick,
+                    onAddNewClick = onAddNewClick
                 )
             }
         }
@@ -71,6 +72,8 @@ class InterviewsFragment : Fragment() {
         navigator.openInterviewDetailsScreen(interview)
     }
 
-    // navigator.openAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
+    private val onAddNewClick = {
+        navigator.openAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
+    }
 
 }
