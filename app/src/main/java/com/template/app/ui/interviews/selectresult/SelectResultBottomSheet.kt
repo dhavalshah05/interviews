@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.template.app.databinding.SelectResultBottomSheetBinding
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.template.app.domain.interviews.models.InterviewResult
 import com.template.app.ui.common.bottomsheet.TransparentBottomSheet
 import com.template.app.ui.common.models.Selectable
 import com.template.app.util.bundle.getParcelableValueOrError
 import com.template.app.util.bundle.getStringValueOrError
+import com.template.app.util.list.updateItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,10 +37,7 @@ class SelectResultBottomSheet : TransparentBottomSheet() {
         }
     }
 
-    private lateinit var adapter: SelectResultAdapter
-
-    private var _binding: SelectResultBottomSheetBinding? = null
-    private val binding get() = _binding!!
+    private val items = mutableStateOf(InterviewResult.values().toList().map { Selectable(it, false) })
 
     private val requestKeySelectResult: String by lazy {
         arguments.getStringValueOrError(BUNDLE_REQUEST_KEY_SELECT_RESULT)
@@ -50,8 +49,7 @@ class SelectResultBottomSheet : TransparentBottomSheet() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = SelectResultAdapter()
-        adapter.setListener(adapterListener)
+        items.value = items.value.updateItem(Selectable(item = interviewResult, selected = true)) { it.item.name == interviewResult.name }
     }
 
     override fun onCreateView(
@@ -59,32 +57,17 @@ class SelectResultBottomSheet : TransparentBottomSheet() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return SelectResultBottomSheetBinding.inflate(inflater, container, false).root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = SelectResultBottomSheetBinding.bind(view)
-        initRecyclerView()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private val adapterListener = object : SelectResultAdapter.Listener {
-        override fun onResultClick(item: Selectable<InterviewResult>) {
-            notifyParent(item.item)
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.Default)
+            setContent {
+                SelectResultScreen(
+                    items = items.value,
+                    onItemSelect = {
+                        notifyParent(it.item)
+                    }
+                )
+            }
         }
-    }
-
-    private fun initRecyclerView() {
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewSelectResult.layoutManager = layoutManager
-        binding.recyclerViewSelectResult.adapter = adapter
-        adapter.replaceItems(
-            InterviewResult.values().toList().map { Selectable(it, it == interviewResult) })
     }
 
     private fun notifyParent(result: InterviewResult) {

@@ -51,7 +51,9 @@ fun SelectableItem(
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 15.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            content()
+            Row(modifier = Modifier.weight(1F)) {
+                content()
+            }
 
             if (isSelected()) {
                 Icon(
