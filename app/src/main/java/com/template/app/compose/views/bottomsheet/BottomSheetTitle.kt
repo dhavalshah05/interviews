@@ -36,9 +36,7 @@ fun BottomSheetTitle(
     ) {
         Text(
             text = title,
-            style = AppTextStyle.SemiBold,
-            color = colorResource(id = R.color.primary),
-            fontSize = 20.sp
+            style = AppTextStyle.SemiBoldPrimary.copy(fontSize = 20.sp),
         )
         Divider(
             Modifier

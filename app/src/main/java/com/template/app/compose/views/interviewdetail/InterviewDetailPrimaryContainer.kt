@@ -40,17 +40,15 @@ fun InterviewDetailPrimaryContainer(
     ) {
         Text(
             text = label,
-            style = AppTextStyle.Regular,
-            color = colorResource(id = R.color.primary),
-            fontSize = 14.sp
+            style = AppTextStyle.RegularPrimary,
         )
         Text(
             text = value,
-            style = AppTextStyle.SemiBold,
-            color = colorResource(id = R.color.primary),
-            fontSize = 18.sp,
+            style = AppTextStyle.SemiBoldPrimary.copy(
+                fontSize = 18.sp,
+                textAlign = TextAlign.End
+            ),
             modifier = Modifier.weight(1F),
-            textAlign = TextAlign.End
         )
     }
 }

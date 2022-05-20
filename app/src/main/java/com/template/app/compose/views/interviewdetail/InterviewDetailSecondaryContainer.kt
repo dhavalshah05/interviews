@@ -58,9 +58,7 @@ fun InterviewDetailSecondaryContainer(
         ) {
             Text(
                 text = label,
-                style = AppTextStyle.Regular,
-                color = colorResource(id = R.color.primary),
-                fontSize = 14.sp,
+                style = AppTextStyle.RegularPrimary,
                 modifier = Modifier.weight(1F),
             )
             if (value.isNotBlank()) {
@@ -73,9 +71,7 @@ fun InterviewDetailSecondaryContainer(
             } else {
                 Text(
                     text = stringResource(id = R.string.label_not_available),
-                    style = AppTextStyle.Regular,
-                    color = colorResource(id = R.color.textSecondary),
-                    fontSize = 14.sp,
+                    style = AppTextStyle.RegularSecondary,
                 )
             }
         }
@@ -83,10 +79,11 @@ fun InterviewDetailSecondaryContainer(
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = value,
-                style = AppTextStyle.SemiBold,
+                style = AppTextStyle.SemiBoldPrimary.copy(
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Start
+                ),
                 color = colorResource(id = R.color.textPrimary),
-                fontSize = 14.sp,
-                textAlign = TextAlign.Start
             )
         }
     }

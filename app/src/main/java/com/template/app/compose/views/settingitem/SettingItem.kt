@@ -45,8 +45,7 @@ fun SettingItem(
         Text(
             text = title,
             modifier = Modifier.weight(1f),
-            style = AppTextStyle.Medium,
-            color = colorResource(id = R.color.textPrimary)
+            style = AppTextStyle.MediumPrimary,
         )
         Icon(
             painter = painterResource(id = R.drawable.ic_arrow_right),

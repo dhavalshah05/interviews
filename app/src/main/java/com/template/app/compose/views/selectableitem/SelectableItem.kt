@@ -27,9 +27,7 @@ private fun PreviewSelectableItem() {
         content = {
             Text(
                 text = "Some Title".plus(" "),
-                style = AppTextStyle.Regular,
-                fontSize = 14.sp,
-                color = colorResource(id = R.color.textPrimary),
+                style = AppTextStyle.RegularPrimary,
                 modifier = Modifier.weight(1F)
             )
         }

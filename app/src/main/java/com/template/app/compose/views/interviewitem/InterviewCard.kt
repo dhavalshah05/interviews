@@ -70,28 +70,20 @@ fun InterviewCard(
         ) {
             Text(
                 text = "#${interview.id}",
-                style = AppTextStyle.Medium,
-                color = colorResource(id = R.color.textPrimary),
-                fontSize = 14.sp
+                style = AppTextStyle.MediumPrimary,
             )
             Text(
                 text = interview.candidateName,
-                style = AppTextStyle.SemiBold,
-                color = colorResource(id = R.color.textPrimary),
-                fontSize = 24.sp
+                style = AppTextStyle.SemiBoldPrimary.copy(fontSize = 24.sp),
             )
             Text(
                 text = date,
-                style = AppTextStyle.Regular,
-                color = colorResource(id = R.color.textSecondary),
-                fontSize = 10.sp,
+                style = AppTextStyle.RegularSecondary.copy(fontSize = 10.sp),
                 modifier = Modifier.padding(top = 4.dp)
             )
             Text(
                 text = interview.interviewer.name,
-                style = AppTextStyle.Regular,
-                color = colorResource(id = R.color.textPrimary),
-                fontSize = 12.sp,
+                style = AppTextStyle.RegularPrimary.copy(fontSize = 12.sp),
                 modifier = Modifier.padding(top = 8.dp)
             )
         }
@@ -104,15 +96,11 @@ fun InterviewCard(
         ) {
             Text(
                 text = interview.experience,
-                style = AppTextStyle.Bold,
-                color = colorResource(id = R.color.textPrimary),
-                fontSize = 24.sp
+                style = AppTextStyle.BoldPrimary.copy(fontSize = 24.sp),
             )
             Text(
                 text = stringResource(id = R.string.label_years),
-                style = AppTextStyle.Regular,
-                color = colorResource(id = R.color.textPrimary),
-                fontSize = 10.sp,
+                style = AppTextStyle.RegularPrimary.copy(fontSize = 10.sp),
                 modifier = Modifier.offset { IntOffset(y = -12, x = 0) }
             )
             InterviewResultStatus(

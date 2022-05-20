@@ -35,10 +35,11 @@ fun InterviewResultStatus(
 
     Text(
         text = stringResource(id = result.textResId).uppercase(),
-        style = AppTextStyle.Regular,
-        color = colorResource(id = result.textColorResId),
-        textAlign = TextAlign.Center,
-        fontSize = fontSize.sp,
+        style = AppTextStyle.RegularPrimary.copy(
+            color = colorResource(id = result.textColorResId),
+            fontSize = fontSize.sp,
+            textAlign = TextAlign.Center,
+        ),
         modifier = modifier
             .then(if (width != null) Modifier.width(width) else Modifier)
             .background(colorResource(id = result.bgColorResId), RoundedCornerShape(radius.dp))

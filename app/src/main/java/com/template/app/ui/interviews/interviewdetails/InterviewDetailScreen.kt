@@ -83,16 +83,12 @@ fun InterviewDetailScreen(
         ) {
             Text(
                 text = interview.candidateName,
-                style = AppTextStyle.SemiBold,
-                color = colorResource(id = R.color.textPrimary),
-                fontSize = 30.sp
+                style = AppTextStyle.SemiBoldPrimary.copy(fontSize = 30.sp),
             )
             Spacer(modifier = Modifier.height(3.dp))
             Text(
                 text = date,
-                style = AppTextStyle.Regular,
-                color = colorResource(id = R.color.textSecondary),
-                fontSize = 14.sp
+                style = AppTextStyle.RegularSecondary,
             )
             Spacer(modifier = Modifier.height(10.dp))
             Row(

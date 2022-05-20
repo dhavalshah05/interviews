@@ -38,9 +38,7 @@ fun ToolbarPrimary(
         Spacer(modifier = Modifier.width(20.dp))
         Text(
             text = title,
-            style = AppTextStyle.Medium,
-            fontSize = 20.sp,
-            color = colorResource(id = R.color.textPrimary),
+            style = AppTextStyle.MediumPrimary.copy(fontSize = 20.sp),
             modifier = Modifier.weight(1F)
         )
         IconButton(onClick = onSettingsClick) {

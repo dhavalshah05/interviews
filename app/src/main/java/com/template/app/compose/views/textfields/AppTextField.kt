@@ -60,9 +60,7 @@ fun AppTextField(
         placeholder = {
             Text(
                 text = placeHolderText,
-                style = AppTextStyle.Regular,
-                fontSize = 14.sp,
-                color = colorResource(id = R.color.textSecondary)
+                style = AppTextStyle.RegularSecondary,
             )
         },
         leadingIcon = leadingIcon,
@@ -78,7 +76,7 @@ fun AppTextField(
             textColor = colorResource(id = R.color.primary),
             backgroundColor = colorResource(id = R.color.cardBackground)
         ),
-        textStyle = AppTextStyle.Regular.copy(
+        textStyle = AppTextStyle.RegularPrimary.copy(
             fontSize = 14.sp
         ),
     )

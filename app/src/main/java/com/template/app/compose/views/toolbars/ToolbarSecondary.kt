@@ -46,9 +46,9 @@ fun ToolbarSecondary(
         }
         Text(
             text = title,
-            style = AppTextStyle.Medium.copy(),
-            fontSize = 20.sp,
-            color = colorResource(id = R.color.textPrimary),
+            style = AppTextStyle.MediumPrimary.copy(
+                fontSize = 20.sp,
+            ),
             modifier = Modifier.weight(1F),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,

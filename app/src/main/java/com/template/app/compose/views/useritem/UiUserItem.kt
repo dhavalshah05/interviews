@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalTextApi::class)
-
 package com.template.app.compose.views.useritem
 
 import androidx.compose.foundation.layout.Column
@@ -43,19 +41,15 @@ fun UiUserItem(
         ) {
             Text(
                 text = id,
-                fontSize = 18.sp,
-                color = colorResource(id = R.color.textPrimary),
                 modifier = Modifier.padding(start = 20.dp),
-                style = AppTextStyle.Regular
+                style = AppTextStyle.RegularPrimary.copy(fontSize = 18.sp)
             )
             Text(
                 text = name,
-                fontSize = 18.sp,
-                color = colorResource(id = R.color.textPrimary),
                 modifier = Modifier
                     .padding(start = 20.dp)
                     .weight(1f),
-                style = AppTextStyle.Regular
+                style = AppTextStyle.RegularPrimary.copy(fontSize = 18.sp)
             )
             IconButton(
                 onClick = onDeleteClick,

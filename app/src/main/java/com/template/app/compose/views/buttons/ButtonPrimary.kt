@@ -48,8 +48,7 @@ fun ButtonPrimary(
         content = {
             Text(
                 text = text,
-                color = colorResource(id = R.color.white),
-                style = AppTextStyle.SemiBold
+                style = AppTextStyle.SemiBoldPrimary.copy(color = colorResource(id = R.color.white))
             )
         },
         colors = ButtonDefaults.buttonColors(
