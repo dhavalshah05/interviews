@@ -1,13 +1,19 @@
 package com.template.app.compose.views.interviewdetail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -16,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.template.app.R
+import com.template.app.compose.clickableWithRipple
+import com.template.app.compose.clickableWithoutRipple
 import com.template.app.compose.views.texts.AppTextStyle
 
 @Preview
@@ -34,10 +42,15 @@ fun InterviewDetailSecondaryContainer(
     label: String,
     value: String,
 ) {
+    val isOpen = remember {
+        mutableStateOf(false)
+    }
+
     Column(
         modifier = modifier
             .fillMaxWidth()
             .background(colorResource(id = R.color.cardBackground), RoundedCornerShape(4.dp))
+            .clickableWithoutRipple { isOpen.value = !isOpen.value }
             .padding(horizontal = 20.dp, vertical = 10.dp),
     ) {
         Row(
@@ -54,7 +67,8 @@ fun InterviewDetailSecondaryContainer(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_down),
                     contentDescription = "",
-                    tint = colorResource(id = R.color.primary)
+                    tint = colorResource(id = R.color.primary),
+                    modifier = Modifier.rotate(if (isOpen.value) 180F else 0F)
                 )
             } else {
                 Text(
@@ -65,8 +79,8 @@ fun InterviewDetailSecondaryContainer(
                 )
             }
         }
-        if (value.isNotBlank()) {
-            Spacer(modifier = Modifier.height(15.dp))
+        if (value.isNotBlank() && isOpen.value) {
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = value,
                 style = AppTextStyle.SemiBold,
