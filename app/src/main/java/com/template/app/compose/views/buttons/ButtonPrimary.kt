@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.template.app.R
@@ -38,7 +39,8 @@ private fun PreviewButtonPrimary() {
 fun ButtonPrimary(
     modifier: Modifier = Modifier,
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    paddingHorizontal: Dp = 18.dp
 ) {
     Button(
         modifier = modifier,
@@ -54,6 +56,6 @@ fun ButtonPrimary(
             backgroundColor = colorResource(id = R.color.primary)
         ),
         shape = RoundedCornerShape(100.dp),
-        contentPadding = PaddingValues(horizontal = 18.dp, vertical = 12.dp)
+        contentPadding = PaddingValues(horizontal = paddingHorizontal, vertical = 12.dp)
     )
 }

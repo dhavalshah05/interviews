@@ -16,7 +16,7 @@ abstract class TransparentBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val parent = view.parent as? View
-        parent?.setBackgroundColor(Color.RED)
+        parent?.setBackgroundColor(Color.TRANSPARENT)
     }
 
 }
