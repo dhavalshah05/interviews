@@ -7,6 +7,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../keystore/interviews.jks')
+            storePassword 'interviews123'
+            keyAlias 'interviews_key'
+            keyPassword 'interviews123'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -26,6 +34,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

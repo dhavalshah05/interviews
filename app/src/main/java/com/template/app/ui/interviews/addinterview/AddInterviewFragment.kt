@@ -204,7 +204,7 @@ class AddInterviewFragment : Fragment() {
             val interviewer = selectedInterviewer ?: throw ApplicationException(getString(R.string.validation_select_interviewer))
 
             val interview = Interview(
-                id = 0L,
+                id = System.currentTimeMillis(),
                 candidateName = binding.candidateName.text.toString(),
                 experience = binding.experience.text.toString(),
                 interviewDate = interviewDate.time,
