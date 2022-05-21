@@ -1,10 +1,13 @@
 package com.template.app.compose.views.interviewdetail
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
@@ -46,12 +49,15 @@ fun InterviewDetailSecondaryContainer(
         mutableStateOf(false)
     }
 
+    val rotate = animateFloatAsState(targetValue = if (isOpen.value) -180F else 0F)
+
     Column(
         modifier = modifier
             .fillMaxWidth()
             .background(colorResource(id = R.color.cardBackground), RoundedCornerShape(4.dp))
             .clickableWithoutRipple { isOpen.value = !isOpen.value }
-            .padding(horizontal = 20.dp, vertical = 10.dp),
+            .padding(horizontal = 20.dp, vertical = 10.dp)
+            /*.animateContentSize()*/,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -66,7 +72,7 @@ fun InterviewDetailSecondaryContainer(
                     painter = painterResource(id = R.drawable.ic_arrow_down),
                     contentDescription = "",
                     tint = colorResource(id = R.color.primary),
-                    modifier = Modifier.rotate(if (isOpen.value) 180F else 0F)
+                    modifier = Modifier.rotate(rotate.value)
                 )
             } else {
                 Text(
@@ -77,14 +83,16 @@ fun InterviewDetailSecondaryContainer(
         }
         if (value.isNotBlank() && isOpen.value) {
             Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = value,
-                style = AppTextStyle.SemiBoldPrimary.copy(
-                    fontSize = 14.sp,
-                    textAlign = TextAlign.Start
-                ),
-                color = colorResource(id = R.color.textPrimary),
-            )
+            SelectionContainer {
+                Text(
+                    text = value,
+                    style = AppTextStyle.SemiBoldPrimary.copy(
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Start
+                    ),
+                    color = colorResource(id = R.color.textPrimary),
+                )
+            }
         }
     }
 
