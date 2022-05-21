@@ -36,7 +36,7 @@ object PrototypeData {
                     result = getInterviewResult(i),
                     interviewer = getInterviewers().first(),
                     manager = getManagers().first(),
-                    interviewComments = "Sample comments",
+                    interviewComments = getInterviewComments(),
                     practicalComments = "",
                     practicalLink = ""
                 )
@@ -58,4 +58,12 @@ object PrototypeData {
     fun getInterview(): Interview {
         return getInterviews().first()
     }
+
+    private fun getInterviewComments(): String = """
+        1. Comment
+        2. Comment
+        3. Comment
+        4. Comment
+        5. Comment
+    """.trimIndent()
 }
