@@ -53,11 +53,13 @@ fun InterviewDetailSecondaryContainer(
 
     Column(
         modifier = modifier
+            .heightIn(min = 50.dp)
             .fillMaxWidth()
             .background(colorResource(id = R.color.cardBackground), RoundedCornerShape(4.dp))
             .clickableWithoutRipple { isOpen.value = !isOpen.value }
             .padding(horizontal = 20.dp, vertical = 10.dp)
             /*.animateContentSize()*/,
+        verticalArrangement = Arrangement.Center
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
