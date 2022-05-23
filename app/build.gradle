@@ -7,6 +7,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../keystore/interviews.jks')
+            storePassword 'interviews123'
+            keyAlias 'interviews_key'
+            keyPassword 'interviews123'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -26,11 +34,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix "-debug"
         }
     }
 
     buildFeatures {
         viewBinding true
+        compose true
     }
 
     compileOptions {
@@ -40,6 +54,10 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0-beta01'
     }
 }
 
@@ -92,4 +110,9 @@ dependencies {
 
     // DatePicker
     implementation 'com.github.drawers:SpinnerDatePicker:2.0.1'
+
+    // Compose
+    implementation 'androidx.compose.material:material:1.2.0-beta01'
+    debugImplementation "androidx.compose.ui:ui-tooling:1.2.0-beta01"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.2.0-beta01"
 }

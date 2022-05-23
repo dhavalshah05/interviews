@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.template.app.databinding.SelectManagerBottomSheetBinding
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.template.app.domain.managers.models.Manager
+import com.template.app.ui.PrototypeData
 import com.template.app.ui.common.bottomsheet.TransparentBottomSheet
 import com.template.app.ui.common.models.Selectable
 import com.template.app.util.bundle.getLongValueOrError
 import com.template.app.util.bundle.getStringValueOrError
+import com.template.app.util.list.updateItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,23 +38,21 @@ class SelectManagerBottomSheet : TransparentBottomSheet() {
         }
     }
 
-    private lateinit var adapter: SelectManagerAdapter
-
-    private var _binding: SelectManagerBottomSheetBinding? = null
-    private val binding get() = _binding!!
-
     private val requestKeySelectManager: String by lazy {
         arguments.getStringValueOrError(BUNDLE_REQUEST_KEY_SELECT_MANAGER)
     }
 
-    private val selectedManagerId: Long by lazy {
-        arguments.getLongValueOrError(BUNDLE_MANAGER_ID)
-    }
+    private val items = mutableStateOf(PrototypeData.getManagers().map { Selectable(item = it, selected = false) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = SelectManagerAdapter()
-        adapter.setListener(adapterListener)
+        val selectedManagerId = arguments.getLongValueOrError(BUNDLE_MANAGER_ID)
+        val selectableItem = items.value.find { it.item.id == selectedManagerId }
+        if (selectableItem != null) {
+            items.value = items.value.updateItem(selectableItem.copy(selected = true)) {
+                it.item.id == selectableItem.item.id
+            }
+        }
     }
 
     override fun onCreateView(
@@ -59,39 +60,15 @@ class SelectManagerBottomSheet : TransparentBottomSheet() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return SelectManagerBottomSheetBinding.inflate(inflater, container, false).root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = SelectManagerBottomSheetBinding.bind(view)
-        initRecyclerView()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private val adapterListener = object : SelectManagerAdapter.Listener {
-        override fun onManagerClick(item: Selectable<Manager>) {
-            notifyParent(item.item)
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.Default)
+            setContent {
+                SelectManagerScreen(
+                    items = items.value,
+                    onItemSelect = { notifyParent(it.item) }
+                )
+            }
         }
-    }
-
-    private fun initRecyclerView() {
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewSelectManager.layoutManager = layoutManager
-        binding.recyclerViewSelectManager.adapter = adapter
-        adapter.replaceItems(getDummyManagers())
-    }
-
-    private fun getDummyManagers(): List<Selectable<Manager>> {
-        val result = mutableListOf<Manager>()
-        for (index in 1 until 20) {
-            result.add(Manager(id = index.toLong(), name = "Manager $index"))
-        }
-        return result.map { Selectable(it, it.id == selectedManagerId) }
     }
 
     private fun notifyParent(manager: Manager) {

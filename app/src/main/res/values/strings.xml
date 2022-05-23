@@ -47,7 +47,7 @@
     <string name="validation_select_interview_date">Please select interview date</string>
     <string name="validation_select_manager">Please select HR manager</string>
     <string name="validation_select_interviewer">Please select interviewer</string>
-    <string name="validation_interview_name_empty">Please enter interviewer name</string>
+    <string name="validation_interviewer_name_empty">Please enter interviewer name</string>
     <string name="validation_manager_name_empty">Please enter manager name</string>
 
     <string name="dialog_delete_interview_title">Delete interview</string>
