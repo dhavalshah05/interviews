@@ -19,7 +19,7 @@ This is a prototype to demonstrate use of Jetpack Compose in a multi screen appl
 # Screens
 
 ## Interviews
-![](./screenshots/interviews_screen.png)
+![](./screenshots/screen_interviews.png)
 
 ## Interview Details
-![](./screenshots/interview_details.png)
+![](./screenshots/screen_interview_detail.png)
