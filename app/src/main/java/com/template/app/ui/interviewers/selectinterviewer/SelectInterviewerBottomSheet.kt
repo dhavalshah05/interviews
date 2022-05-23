@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.template.app.databinding.SelectInterviewerBottomSheetBinding
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.template.app.domain.interviewers.models.Interviewer
+import com.template.app.ui.PrototypeData
 import com.template.app.ui.common.bottomsheet.TransparentBottomSheet
 import com.template.app.ui.common.models.Selectable
 import com.template.app.util.bundle.getLongValueOrError
 import com.template.app.util.bundle.getStringValueOrError
+import com.template.app.util.list.updateItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,23 +35,21 @@ class SelectInterviewerBottomSheet : TransparentBottomSheet() {
         }
     }
 
-    private lateinit var adapter: SelectInterviewerAdapter
-
-    private var _binding: SelectInterviewerBottomSheetBinding? = null
-    private val binding get() = _binding!!
-
     private val requestKeySelectInterviewer: String by lazy {
         arguments.getStringValueOrError(BUNDLE_REQUEST_KEY_SELECT_INTERVIEWER)
     }
 
-    private val selectedInterviewId: Long by lazy {
-        arguments.getLongValueOrError(BUNDLE_INTERVIEWER_ID)
-    }
+    private val items = mutableStateOf(PrototypeData.getInterviewers().map { Selectable(item = it, selected = false) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = SelectInterviewerAdapter()
-        adapter.setListener(adapterListener)
+        val selectedInterviewerId = arguments.getLongValueOrError(BUNDLE_INTERVIEWER_ID)
+        val selectableItem = items.value.find { it.item.id == selectedInterviewerId }
+        if (selectableItem != null) {
+            items.value = items.value.updateItem(selectableItem.copy(selected = true)) {
+                it.item.id == selectableItem.item.id
+            }
+        }
     }
 
     override fun onCreateView(
@@ -56,39 +57,15 @@ class SelectInterviewerBottomSheet : TransparentBottomSheet() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return SelectInterviewerBottomSheetBinding.inflate(inflater, container, false).root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = SelectInterviewerBottomSheetBinding.bind(view)
-        initRecyclerView()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private val adapterListener = object : SelectInterviewerAdapter.Listener {
-        override fun onInterviewerClick(item: Selectable<Interviewer>) {
-            notifyParent(item.item)
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.Default)
+            setContent {
+                SelectInterviewerScreen(
+                    items = items.value,
+                    onItemSelect = { notifyParent(it.item) }
+                )
+            }
         }
-    }
-
-    private fun initRecyclerView() {
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewSelectInterviewers.layoutManager = layoutManager
-        binding.recyclerViewSelectInterviewers.adapter = adapter
-        adapter.replaceItems(getDummyInterviewers())
-    }
-
-    private fun getDummyInterviewers(): List<Selectable<Interviewer>> {
-        val result = mutableListOf<Interviewer>()
-        for (index in 1 until 20) {
-            result.add(Interviewer(id = index.toLong(), name = "Interviewer $index"))
-        }
-        return result.map { Selectable(it, it.id == selectedInterviewId) }
     }
 
     private fun notifyParent(interviewer: Interviewer) {
