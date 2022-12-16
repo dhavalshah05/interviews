@@ -3,6 +3,7 @@ package com.service.presentation.di
 import android.app.Activity
 import com.service.presentation.utils.alert.AlertMessage
 import com.service.presentation.utils.alert.ToastAlertMessage
+import com.service.presentation.utils.alert.ToastyAlertMessage
 import com.service.presentation.utils.keyboard.KeyboardVisibilityHandler
 import dagger.Module
 import dagger.Provides
@@ -23,7 +24,7 @@ class ActivityModule {
     @Provides
     @ActivityScoped
     fun provideAlertMessage(activity: Activity): AlertMessage {
-        return ToastAlertMessage(activity)
+        return ToastyAlertMessage(activity)
     }
 
 }
