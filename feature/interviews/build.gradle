@@ -1,0 +1,11 @@
+apply from: "$rootDir/buildSrc/base-feature-module.gradle"
+
+dependencies {
+    implementation SpinnerDatePicker.datePicker
+
+    implementation project(":service:presentation")
+    implementation project(":service:navigation")
+    implementation project(":data:interviews")
+    implementation project(":data:interviewers")
+    implementation project(":data:managers")
+}

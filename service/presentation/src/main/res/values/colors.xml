@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#01264F</color>
+    <color name="primary50">#4D01254F</color>
+    <color name="primaryDark">#01264F</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorGreenAlert">@color/green</color>
+    <color name="colorRedAlert">@color/red</color>
+
+    <color name="textPrimary">#01264F</color>
+    <color name="textSecondary">#A0A9B9</color>
+
+    <color name="green">#1BB252</color>
+    <color name="red">#B23F1B</color>
+    <color name="orange">#D97E23</color>
+    <color name="greenYellow">#969633</color>
+    <color name="grey">#E5E5E5</color>
+
+    <color name="cardBackground">#F0F3FD</color>
+    <color name="cardBorder">#A0A9B9</color>
+
+    <color name="divider">#F0F3FD</color>
+    <color name="dividerOnCardBackground">#1A01264F</color>
+
+    <color name="ripple">#0D000000</color>
+</resources>

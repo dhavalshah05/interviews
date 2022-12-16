@@ -1,2 +1,23 @@
-rootProject.name = "interviews"
+rootProject.name = "interviews_modular"
+
 include ':app'
+
+// Feature Modules
+include ':feature'
+include ':feature:splash'
+include ':feature:settings'
+include ':feature:managers'
+include ':feature:interviewers'
+include ':feature:interviews'
+
+// Data Modules
+include ':data'
+include ':data:managers'
+include ':data:interviewers'
+include ':data:interviews'
+
+// Service Modules
+include ':service'
+include ':service:presentation'
+include ':service:navigation'
+include ':service:preferences'

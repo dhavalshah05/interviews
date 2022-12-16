@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/interviewsFragment"
+    android:id="@+id/app_nav_graph">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.feature.splash.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/splash_fragment"/>
+
+    <fragment
+        android:id="@+id/interviewsFragment"
+        android:name="com.feature.interviews.InterviewsFragment"
+        android:label="Interviews"/>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.feature.settings.SettingsFragment"
+        android:label="Settings"/>
+
+    <fragment
+        android:id="@+id/managersFragment"
+        android:name="com.feature.managers.ManagersFragment"
+        android:label="Managers"/>
+
+    <fragment
+        android:id="@+id/interviewersFragment"
+        android:name="com.feature.interviewers.InterviewersFragment"
+        android:label="Interviewers"/>
+
+    <fragment
+        android:id="@+id/interviewDetailFragment"
+        android:name="com.feature.interviews.detail.InterviewDetailsFragment"
+        android:label="Interview Detail"/>
+
+    <fragment
+        android:id="@+id/addInterviewFragment"
+        android:name="com.feature.interviews.add.AddInterviewFragment"
+        android:label="Add Interview"/>
+
+    <fragment
+        android:id="@+id/editInterviewFragment"
+        android:name="com.feature.interviews.edit.EditInterviewFragment"
+        android:label="Edit Interview"/>
+
+</navigation>

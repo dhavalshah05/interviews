@@ -1,0 +1,7 @@
+apply from: "$rootDir/buildSrc/base-feature-module.gradle"
+
+dependencies {
+    implementation project(":service:presentation")
+    implementation project(":service:navigation")
+    implementation project(":data:interviewers")
+}

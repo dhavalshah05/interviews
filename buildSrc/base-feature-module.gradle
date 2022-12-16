@@ -1,0 +1,64 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-parcelize"
+apply plugin: "dagger.hilt.android.plugin"
+
+android {
+    compileSdk ProjectConfig.compileSdk
+
+    defaultConfig {
+        minSdk ProjectConfig.minSdk
+        targetSdk ProjectConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+        compose true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Compose.composeCompilerVersion
+    }
+}
+
+dependencies {
+    implementation AndroidX.coreKtx
+    implementation AndroidX.appCompat
+    implementation AndroidX.activityKtx
+    implementation AndroidX.constraintLayout
+
+    implementation Material.material
+
+    // Hilt
+    implementation Hilt.android
+    kapt Hilt.compiler
+
+    // Coroutine
+    implementation Coroutine.core
+    implementation Coroutine.android
+
+    // Navigation
+    implementation Navigation.navFragment
+    implementation Navigation.navUi
+
+    // Lifecycle
+    implementation Lifecycle.viewModel
+    implementation Lifecycle.liveData
+
+    // Compose
+    implementation Compose.material
+    debugImplementation Compose.uiTooling
+    implementation Compose.uiToolingPreview
+}
