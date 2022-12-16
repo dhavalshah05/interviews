@@ -34,5 +34,4 @@ class KeyboardVisibilityHandler(
             inputManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
         }
     }
-
 }

@@ -51,7 +51,7 @@ class EditInterviewFragment : Fragment() {
 
     @Inject
     lateinit var alertMessage: AlertMessage
-    
+
     private lateinit var validator: Validator
 
     private var _binding: EditInterviewFragmentBinding? = null

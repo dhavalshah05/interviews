@@ -16,5 +16,4 @@ abstract class FullScreenDialog : DialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.AppTheme_FullScreenDialog)
     }
-
 }

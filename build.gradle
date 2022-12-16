@@ -28,3 +28,5 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
+
+apply from: "$rootDir/spotless.gradle"

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 class GridLayoutScrollListener(
     private val layoutManager: GridLayoutManager,
     private val adapter: RecyclerView.Adapter<*>
-): BaseRecyclerViewScrollListener() {
+) : BaseRecyclerViewScrollListener() {
 
     init {
         setVisibleItemThreshold(DEFAULT_VISIBLE_ITEM_THRESHOLD * layoutManager.spanCount)
@@ -19,5 +19,4 @@ class GridLayoutScrollListener(
     override fun getLastVisibleItemPosition(): Int {
         return layoutManager.findLastVisibleItemPosition()
     }
-
 }

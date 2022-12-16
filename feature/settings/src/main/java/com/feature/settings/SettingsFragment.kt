@@ -9,8 +9,8 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import com.service.navigation.Navigator
-import dagger.hilt.android.AndroidEntryPoint
 import com.service.presentation.R
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -56,5 +56,4 @@ class SettingsFragment : Fragment() {
             navigator.openInterviewersScreen()
         }
     }
-
 }

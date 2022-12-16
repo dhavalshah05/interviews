@@ -13,12 +13,12 @@ import com.data.interviews.Interview
 import com.data.interviews.InterviewResult
 import com.data.interviews.PreviewData
 import com.service.navigation.Navigator
+import com.service.presentation.R
 import com.service.presentation.utils.alert.AlertMessage
 import com.service.presentation.utils.bundle.getLongValueOrError
 import com.service.presentation.utils.bundle.getParcelableValueOrError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.service.presentation.R
 
 @AndroidEntryPoint
 class InterviewDetailsFragment : Fragment() {
@@ -92,5 +92,4 @@ class InterviewDetailsFragment : Fragment() {
     private val onEditInterviewResultClick: () -> Unit = {
         navigator.openSelectResultScreen(REQUEST_KEY_SELECT_RESULT, interview.value.result.name)
     }
-
 }

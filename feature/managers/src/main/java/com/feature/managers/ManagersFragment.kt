@@ -79,5 +79,4 @@ class ManagersFragment : Fragment() {
         this.managers.value = managers
         alertMessage.success(getString(com.service.presentation.R.string.alert_message_manager_deleted))
     }
-
 }

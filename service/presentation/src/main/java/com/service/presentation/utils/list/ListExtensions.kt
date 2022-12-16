@@ -39,7 +39,7 @@ fun <T> List<T>.addItemAtStart(item: T): List<T> {
 /**
  *
  */
-fun <T> List<T>.deleteItem(condition: (T) -> Boolean) : List<T> {
+fun <T> List<T>.deleteItem(condition: (T) -> Boolean): List<T> {
     val items = this.toMutableList()
     val index = items.indexOfFirst(condition)
     if (index != -1) {
@@ -51,7 +51,7 @@ fun <T> List<T>.deleteItem(condition: (T) -> Boolean) : List<T> {
 /**
  *
  */
-fun <T> List<T>.deleteItem(index: Int) : List<T> {
+fun <T> List<T>.deleteItem(index: Int): List<T> {
     val items = this.toMutableList()
     if (index != -1) {
         items.removeAt(index)
@@ -62,7 +62,7 @@ fun <T> List<T>.deleteItem(index: Int) : List<T> {
 /**
  *
  */
-fun <T> List<T>.updateItem(item: T, condition: (T) -> Boolean) : List<T> {
+fun <T> List<T>.updateItem(item: T, condition: (T) -> Boolean): List<T> {
     val items = this.toMutableList()
     val index = items.indexOfFirst(condition)
     if (index != -1) {

@@ -94,5 +94,4 @@ internal fun InterviewDetailSecondaryContainer(
             }
         }
     }
-
 }

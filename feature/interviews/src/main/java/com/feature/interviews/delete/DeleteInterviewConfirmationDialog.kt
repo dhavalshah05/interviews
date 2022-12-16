@@ -43,5 +43,4 @@ class DeleteInterviewConfirmationDialog : DialogFragment() {
         parentFragmentManager.setFragmentResult(requestKeyDeleteConfirm, Bundle())
         dismiss()
     }
-
 }

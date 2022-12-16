@@ -78,5 +78,4 @@ class InterviewersFragment : Fragment() {
             .deleteItem { it.id == interviewer.id }
         alertMessage.success(getString(com.service.presentation.R.string.alert_message_interviewer_deleted))
     }
-
 }

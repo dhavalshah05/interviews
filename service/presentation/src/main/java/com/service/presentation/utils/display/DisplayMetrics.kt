@@ -31,5 +31,4 @@ object DisplayMetrics {
         activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
         return displayMetrics.heightPixels
     }
-
 }

@@ -4,8 +4,8 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.service.presentation.utils.bundle.getStringValueOrError
 import com.service.presentation.R
+import com.service.presentation.utils.bundle.getStringValueOrError
 
 class DeleteManagerConfirmationDialog : DialogFragment() {
 
@@ -43,5 +43,4 @@ class DeleteManagerConfirmationDialog : DialogFragment() {
         parentFragmentManager.setFragmentResult(requestKeyDeleteConfirm, Bundle())
         dismiss()
     }
-
 }

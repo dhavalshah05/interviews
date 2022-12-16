@@ -55,5 +55,4 @@ class SelectDateDialog : DialogFragment() {
         bundle.putSerializable("date", date)
         parentFragmentManager.setFragmentResult(requestKeySelectDate, bundle)
     }
-
 }

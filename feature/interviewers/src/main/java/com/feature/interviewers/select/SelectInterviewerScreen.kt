@@ -56,7 +56,7 @@ internal fun SelectInterviewerScreen(
                         isSelected = { item.selected },
                         onClick = { onItemSelect(item) },
                         content = {
-                            Text("#${item.item.id.toString()}")
+                            Text("#${item.item.id}")
                             Spacer(modifier = Modifier.width(20.dp))
                             Text(item.item.name, modifier = Modifier.weight(1F))
                         }

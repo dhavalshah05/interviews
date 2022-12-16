@@ -57,7 +57,6 @@ abstract class BaseRecyclerViewAdapter<ItemType, VH : BaseViewHolder<ItemType>> 
         notifyItemRangeInserted(startIndex, items.size)
     }
 
-
     /**
      *
      */
@@ -65,7 +64,6 @@ abstract class BaseRecyclerViewAdapter<ItemType, VH : BaseViewHolder<ItemType>> 
         this.items.addAll(index, items)
         notifyItemRangeInserted(index, items.size)
     }
-
 
     /**
      *
@@ -127,7 +125,6 @@ abstract class BaseRecyclerViewAdapter<ItemType, VH : BaseViewHolder<ItemType>> 
         return this.items[index]
     }
 
-
     /**
      * This method is called before binding item.
      * Override this method for setting margin for inflated view.
@@ -140,5 +137,4 @@ abstract class BaseRecyclerViewAdapter<ItemType, VH : BaseViewHolder<ItemType>> 
      *
      */
     abstract fun getViewHolder(inflater: LayoutInflater, parent: ViewGroup, viewType: Int): VH
-
 }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 class StaggeredGridLayoutScrollListener(
     private val layoutManager: StaggeredGridLayoutManager,
     private val adapter: RecyclerView.Adapter<*>
-): BaseRecyclerViewScrollListener() {
+) : BaseRecyclerViewScrollListener() {
 
     init {
         setVisibleItemThreshold(DEFAULT_VISIBLE_ITEM_THRESHOLD * layoutManager.spanCount)
@@ -20,15 +20,14 @@ class StaggeredGridLayoutScrollListener(
         val lastVisibleItemPositions = layoutManager.findLastVisibleItemPositions(null)
 
         var maxSize = 0
-        for(position in lastVisibleItemPositions.indices) {
-            if(position == 0) {
+        for (position in lastVisibleItemPositions.indices) {
+            if (position == 0) {
                 maxSize = lastVisibleItemPositions[position]
-            } else if(lastVisibleItemPositions[position] > maxSize) {
+            } else if (lastVisibleItemPositions[position] > maxSize) {
                 maxSize = lastVisibleItemPositions[position]
             }
         }
 
         return maxSize
     }
-
 }

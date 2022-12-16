@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.os.Parcelable
 import java.io.Serializable
 
-
 /*
 * ****************************************
 * Common
@@ -38,7 +37,7 @@ fun Bundle.getContentAsMap(): MutableMap<String, Any?> {
  * This will return the Parcelable for a [key] from Bundle if available.
  * Otherwise, it will return Null.
  */
-fun <T: Parcelable> Bundle?.getParcelableValueOrNull(key: String): T? {
+fun <T : Parcelable> Bundle?.getParcelableValueOrNull(key: String): T? {
     return if (this?.containsKey(key) == true) {
         getParcelable(key) as T?
     } else {
@@ -50,7 +49,7 @@ fun <T: Parcelable> Bundle?.getParcelableValueOrNull(key: String): T? {
  * This will return the Parcelable for a [key] from Bundle if available.
  * Otherwise, it will throw [MissingBundleArgumentException]
  */
-fun <T: Parcelable> Bundle?.getParcelableValueOrError(key: String): T {
+fun <T : Parcelable> Bundle?.getParcelableValueOrError(key: String): T {
     if (this == null) {
         throw MissingBundleArgumentException(key)
     } else {
@@ -103,7 +102,6 @@ fun <T : Serializable> Bundle?.getSerializableValueOrError(key: String): T {
 }
 
 // endregion Serializable Extensions
-
 
 /*
 * ****************************************

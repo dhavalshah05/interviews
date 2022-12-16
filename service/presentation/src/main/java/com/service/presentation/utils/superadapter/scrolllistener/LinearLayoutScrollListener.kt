@@ -4,9 +4,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class LinearLayoutScrollListener(
-        private val layoutManager: LinearLayoutManager,
-        private val adapter: RecyclerView.Adapter<*>
-): BaseRecyclerViewScrollListener() {
+    private val layoutManager: LinearLayoutManager,
+    private val adapter: RecyclerView.Adapter<*>
+) : BaseRecyclerViewScrollListener() {
 
     init {
         setVisibleItemThreshold(DEFAULT_VISIBLE_ITEM_THRESHOLD)
@@ -19,5 +19,4 @@ class LinearLayoutScrollListener(
     override fun getLastVisibleItemPosition(): Int {
         return layoutManager.findLastVisibleItemPosition()
     }
-
 }

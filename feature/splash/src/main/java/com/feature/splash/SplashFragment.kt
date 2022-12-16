@@ -28,5 +28,4 @@ class SplashFragment : Fragment() {
             delay(3000)
         }
     }
-
 }

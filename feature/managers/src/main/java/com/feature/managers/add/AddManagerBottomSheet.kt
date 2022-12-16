@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.fragment.app.FragmentManager
+import com.service.presentation.R
 import com.service.presentation.bottomsheet.TransparentBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
-import com.service.presentation.R
 
 @AndroidEntryPoint
 class AddManagerBottomSheet : TransparentBottomSheet() {
@@ -47,12 +46,11 @@ class AddManagerBottomSheet : TransparentBottomSheet() {
         } catch (e: Exception) {
             e.printStackTrace()
             val message = e.message ?: return
-            //alert.showErrorMessage(message = message, dialog = dialog)
+            // alert.showErrorMessage(message = message, dialog = dialog)
         }
     }
 
     private fun setResult() {
         dismiss()
     }
-
 }

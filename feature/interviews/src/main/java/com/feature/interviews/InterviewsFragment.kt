@@ -65,7 +65,6 @@ class InterviewsFragment : Fragment() {
     }
 
     private val onSearchTextChange = { _: String ->
-
     }
 
     private val onInterviewCardClick = { interview: Interview ->
@@ -75,5 +74,4 @@ class InterviewsFragment : Fragment() {
     private val onAddNewClick = {
         navigator.openAddInterviewScreen(REQUEST_KEY_ADD_INTERVIEW)
     }
-
 }

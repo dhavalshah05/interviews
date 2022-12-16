@@ -20,5 +20,4 @@ class ActivityModule {
         val fm = (activity as AppCompatActivity).supportFragmentManager
         return AppNavigator(fm)
     }
-
 }

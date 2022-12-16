@@ -18,5 +18,4 @@ abstract class TransparentBottomSheet : BottomSheetDialogFragment() {
         val parent = view.parent as? View
         parent?.setBackgroundColor(Color.TRANSPARENT)
     }
-
 }

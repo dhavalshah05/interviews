@@ -14,9 +14,9 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.service.presentation.R
 import com.data.managers.Manager
 import com.data.managers.PreviewData
+import com.service.presentation.R
 import com.service.presentation.compose.views.button.ButtonPrimary
 import com.service.presentation.compose.views.toolbar.ToolbarSecondary
 import com.service.presentation.compose.views.useritem.UiUserItem
