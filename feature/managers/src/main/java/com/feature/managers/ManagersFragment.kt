@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.data.managers.Manager
 import com.data.managers.PreviewData
 import com.service.navigation.Navigator
+import com.service.presentation.utils.alert.AlertMessage
 import com.service.presentation.utils.list.deleteItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,6 +26,9 @@ class ManagersFragment : Fragment() {
 
     @Inject
     lateinit var navigator: Navigator
+
+    @Inject
+    lateinit var alertMessage: AlertMessage
 
     private val managers: MutableState<List<Manager>> = mutableStateOf(PreviewData.getManagers())
     private var selectedManager: Manager? = null
@@ -73,6 +77,7 @@ class ManagersFragment : Fragment() {
         var managers = managers.value
         managers = managers.deleteItem { it.id == manager.id }
         this.managers.value = managers
+        alertMessage.success(getString(com.service.presentation.R.string.alert_message_manager_deleted))
     }
 
 }

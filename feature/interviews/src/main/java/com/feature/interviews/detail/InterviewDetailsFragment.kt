@@ -13,10 +13,12 @@ import com.data.interviews.Interview
 import com.data.interviews.InterviewResult
 import com.data.interviews.PreviewData
 import com.service.navigation.Navigator
+import com.service.presentation.utils.alert.AlertMessage
 import com.service.presentation.utils.bundle.getLongValueOrError
 import com.service.presentation.utils.bundle.getParcelableValueOrError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.service.presentation.R
 
 @AndroidEntryPoint
 class InterviewDetailsFragment : Fragment() {
@@ -37,6 +39,9 @@ class InterviewDetailsFragment : Fragment() {
     @Inject
     lateinit var navigator: Navigator
 
+    @Inject
+    lateinit var alertMessage: AlertMessage
+
     private lateinit var interview: MutableState<Interview>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +53,7 @@ class InterviewDetailsFragment : Fragment() {
             interview.value = interview.value.copy(result = interviewResult)
         }
         parentFragmentManager.setFragmentResultListener(REQUEST_KEY_DELETE_INTERVIEW_CONFIRM, this) { _, _ ->
+            alertMessage.success(getString(R.string.alert_message_interview_deleted))
             navigator.goBack()
         }
     }

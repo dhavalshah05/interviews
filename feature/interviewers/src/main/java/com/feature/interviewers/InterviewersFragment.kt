@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.data.interviewers.Interviewer
 import com.data.interviewers.PreviewData
 import com.service.navigation.Navigator
+import com.service.presentation.utils.alert.AlertMessage
 import com.service.presentation.utils.list.deleteItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,6 +26,9 @@ class InterviewersFragment : Fragment() {
 
     @Inject
     lateinit var navigator: Navigator
+
+    @Inject
+    lateinit var alertMessage: AlertMessage
 
     private val interviewers: MutableState<List<Interviewer>> = mutableStateOf(PreviewData.getInterviewers())
     private var selectedInterviewer: Interviewer? = null
@@ -72,6 +76,7 @@ class InterviewersFragment : Fragment() {
         val interviewer = selectedInterviewer ?: return
         interviewers.value = interviewers.value
             .deleteItem { it.id == interviewer.id }
+        alertMessage.success(getString(com.service.presentation.R.string.alert_message_interviewer_deleted))
     }
 
 }

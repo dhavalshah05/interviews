@@ -14,6 +14,7 @@ import com.feature.interviews.util.DecimalDigitsInputFilter
 import com.feature.interviews.util.Validator
 import com.service.navigation.Navigator
 import com.service.presentation.R
+import com.service.presentation.utils.alert.AlertMessage
 import com.service.presentation.utils.bundle.getParcelableValueOrError
 import com.service.presentation.utils.bundle.getSerializableValueOrError
 import com.service.presentation.utils.bundle.getStringValueOrError
@@ -46,6 +47,9 @@ class AddInterviewFragment : Fragment() {
 
     @Inject
     lateinit var navigator: Navigator
+
+    @Inject
+    lateinit var alertMessage: AlertMessage
 
     private lateinit var validator: Validator
 
@@ -217,6 +221,7 @@ class AddInterviewFragment : Fragment() {
             setResult(interview)
         } catch (e: Exception) {
             e.printStackTrace()
+            alertMessage.error(e.message ?: "")
         }
     }
 
@@ -224,7 +229,7 @@ class AddInterviewFragment : Fragment() {
         val bundle = Bundle()
         bundle.putParcelable("interview", interview)
         parentFragmentManager.setFragmentResult(requestKeyAddInterview, bundle)
-        //alert.showSuccessMessage(activity = requireActivity(), message = getString(R.string.alert_message_interview_added))
+        alertMessage.success(getString(R.string.alert_message_interview_added))
         navigator.goBack()
     }
 }

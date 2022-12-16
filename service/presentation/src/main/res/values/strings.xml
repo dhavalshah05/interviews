@@ -59,5 +59,8 @@
 
     <string name="alert_message_interview_added">Interview added</string>
     <string name="alert_message_interview_updated">Interview updated</string>
+    <string name="alert_message_interview_deleted">Interview deleted</string>
+    <string name="alert_message_manager_deleted">Manager deleted</string>
+    <string name="alert_message_interviewer_deleted">Interviewer deleted</string>
 
 </resources>
